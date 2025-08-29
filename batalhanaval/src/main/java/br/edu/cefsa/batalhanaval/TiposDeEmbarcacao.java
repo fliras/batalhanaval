@@ -1,6 +1,6 @@
 package br.edu.cefsa.batalhanaval;
 
-public enum TipoDeEmbarcacao {
+public enum TiposDeEmbarcacao {
     PORTA_AVIOES,
     CRUZADOR,
     FRAGATA,

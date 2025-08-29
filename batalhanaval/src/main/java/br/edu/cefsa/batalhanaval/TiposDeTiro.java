@@ -1,6 +1,6 @@
 package br.edu.cefsa.batalhanaval;
 
-public enum TipoDeTiro {
+public enum TiposDeTiro {
     SIMPLES,
     DUPLO,
     EXPLOSIVO

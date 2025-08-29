@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Embarcacao {
-    private TipoDeEmbarcacao tipoEmbarcacao;
-    private HashMap<TipoDeTiro, Arma> arsenal;
+    private TiposDeEmbarcacao tipoEmbarcacao;
+    private HashMap<TiposDeTiro, Arma> arsenal;
     private List<ParteDeEmbarcacao> partesDaEmbarcacao;
     
-    public Embarcacao(TipoDeEmbarcacao tipoEmbarcacao) {
+    public Embarcacao(TiposDeEmbarcacao tipoEmbarcacao) {
         this.tipoEmbarcacao = tipoEmbarcacao;
     }
     
-    protected void atribuiArsenal(HashMap<TipoDeTiro, Arma> arsenal) {
+    protected void atribuiArsenal(HashMap<TiposDeTiro, Arma> arsenal) {
         this.arsenal = arsenal;
     }
     
@@ -20,7 +20,7 @@ public class Embarcacao {
         this.partesDaEmbarcacao = partesDaEmbarcacao;
     }
     
-    public void atira(TipoDeTiro tipoDeTiro) {
+    public void atira(TiposDeTiro tipoDeTiro) {
         
     }
     

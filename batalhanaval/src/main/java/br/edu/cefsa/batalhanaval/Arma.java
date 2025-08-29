@@ -2,10 +2,10 @@ package br.edu.cefsa.batalhanaval;
 
 public class Arma {
     private String nome;
-    private TipoDeTiro tipoDeTiro;
+    private TiposDeTiro tipoDeTiro;
     private int quantidadeDeTiros;
     
-    public Arma(String nome, TipoDeTiro tipoDeTiro, int quantidadeDeTiros) {
+    public Arma(String nome, TiposDeTiro tipoDeTiro, int quantidadeDeTiros) {
         this.nome = nome;
         this.tipoDeTiro = tipoDeTiro;
         this.quantidadeDeTiros = quantidadeDeTiros;

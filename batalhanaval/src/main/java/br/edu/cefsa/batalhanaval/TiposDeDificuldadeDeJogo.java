@@ -1,6 +1,6 @@
 package br.edu.cefsa.batalhanaval;
 
-public enum DificuldadesDeJogo {
+public enum TiposDeDificuldadeDeJogo {
     FACIL,
     MEDIO,
     DIFICIL

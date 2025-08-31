@@ -18,6 +18,8 @@ public class Embarcacao {
     
     protected void atribuiPartesDeEmbarcacao(List<ParteDeEmbarcacao> partesDaEmbarcacao) {
         this.partesDaEmbarcacao = partesDaEmbarcacao;
+        for (ParteDeEmbarcacao parte : partesDaEmbarcacao)
+            parte.associaEmbarcacao(this);
     }
     
     public void atira(TiposDeTiro tipoDeTiro) {

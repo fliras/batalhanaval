@@ -3,18 +3,18 @@ package br.edu.cefsa.batalhanaval;
 import java.util.HashMap;
 
 public class Tabuleiro {
-    private final DificuldadesDeJogo dificuldade;
+    private final DificuldadeDeJogo dificuldade;
     private final HashMap<String, PosicaoTabuleiro> posicoes;
     private int quantidadeDeLinhasEColunas;
     
-    public Tabuleiro(DificuldadesDeJogo dificuldade) {
+    public Tabuleiro(DificuldadeDeJogo dificuldade) {
         this.dificuldade = dificuldade;
         this.posicoes = new HashMap();
         this.delimitaPosicoes();
     }
     
     private void delimitaPosicoes() {
-        switch(dificuldade) {
+        switch(dificuldade.obtemTipoDificuldade()) {
             case FACIL -> {
                 quantidadeDeLinhasEColunas = 10;
                 break;

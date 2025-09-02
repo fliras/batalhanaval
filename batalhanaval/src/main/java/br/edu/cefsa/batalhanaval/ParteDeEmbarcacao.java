@@ -14,6 +14,7 @@ public class ParteDeEmbarcacao {
     
     public void recebeDisparo() {
         this.estaOperante = false;
+        this.embarcacaoAssociada.atualizaEstado();
     }
     
     public boolean verificaSeEstaOperante() {

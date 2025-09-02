@@ -12,6 +12,14 @@ public class Arma {
     }
     
     public boolean dispara() {
+        if (quantidadeDeTiros == Constantes.QTDE_ILIMITADA) {
+            return true;
+        }
+        if (quantidadeDeTiros == 0)
+        {
+            return false;
+        }
+        quantidadeDeTiros--;
         return true;
     }
     

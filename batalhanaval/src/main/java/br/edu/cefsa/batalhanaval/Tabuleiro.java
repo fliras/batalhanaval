@@ -30,17 +30,16 @@ public class Tabuleiro {
         }
     }
     
-    public PosicaoTabuleiro obtemPosicao(int linha, int coluna) {
-        if (!verificaSeCoordenadasSaoValidas(linha, coluna))
+    public PosicaoTabuleiro obtemPosicao(Coordenada posicao) {
+        if (!verificaSeCoordenadasSaoValidas(posicao.obtemLinha(), posicao.obtemColuna())) {
             return null; // futuramente, lançar uma exception
-        
-        String coordenadas = String.format("%d:%d", linha, coluna);
-        if (posicoes.containsKey(coordenadas)) {
-            return posicoes.get(coordenadas);
         }
-        
-        alocaNovaPosicao(coordenadas);
-        return posicoes.get(coordenadas);
+        String posicaoEmString = posicao.toString();
+        if (posicoes.containsKey(posicaoEmString)) {
+            return posicoes.get(posicaoEmString);
+        }
+        alocaNovaPosicao(posicaoEmString);
+        return posicoes.get(posicaoEmString);
     }
     
     private boolean verificaSeCoordenadasSaoValidas(int linha, int coluna) {

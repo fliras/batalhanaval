@@ -31,22 +31,22 @@ public class Tabuleiro {
     }
     
     public PosicaoTabuleiro obtemPosicao(Coordenada posicao) {
-        if (!verificaSeCoordenadasSaoValidas(posicao.obtemLinha(), posicao.obtemColuna())) {
+        if (!verificaSeCoordenadasSaoValidas(posicao)) {
             return null; // futuramente, lançar uma exception
         }
         String posicaoEmString = posicao.toString();
         if (posicoes.containsKey(posicaoEmString)) {
             return posicoes.get(posicaoEmString);
         }
-        alocaNovaPosicao(posicaoEmString);
+        alocaNovaPosicao(posicao);
         return posicoes.get(posicaoEmString);
     }
     
-    private boolean verificaSeCoordenadasSaoValidas(int linha, int coluna) {
-        return linha <= quantidadeDeLinhasEColunas && coluna <= quantidadeDeLinhasEColunas;
+    private boolean verificaSeCoordenadasSaoValidas(Coordenada posicao) {
+        return posicao.obtemLinha() <= quantidadeDeLinhasEColunas && posicao.obtemColuna() <= quantidadeDeLinhasEColunas;
     }
     
-    private void alocaNovaPosicao(String coordenadas) {
-        posicoes.put(coordenadas, new PosicaoTabuleiro());
+    private void alocaNovaPosicao(Coordenada posicao) {
+        posicoes.put(posicao.toString(), new PosicaoTabuleiro());
     }
 }

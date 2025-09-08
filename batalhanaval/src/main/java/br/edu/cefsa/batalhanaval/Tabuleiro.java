@@ -42,7 +42,7 @@ public class Tabuleiro {
         return posicoes.get(posicaoEmString);
     }
     
-    private boolean verificaSeCoordenadasSaoValidas(Coordenada posicao) {
+    public boolean verificaSeCoordenadasSaoValidas(Coordenada posicao) {
         return posicao.obtemLinha() <= quantidadeDeLinhasEColunas && posicao.obtemColuna() <= quantidadeDeLinhasEColunas;
     }
     

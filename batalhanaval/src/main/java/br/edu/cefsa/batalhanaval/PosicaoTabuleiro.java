@@ -1,22 +1,17 @@
 package br.edu.cefsa.batalhanaval;
 
 public class PosicaoTabuleiro {
-    private boolean atingida;
+    private boolean atingida = false;
     private ParteDeEmbarcacao parteDeEmbarcacao;
     
-    public PosicaoTabuleiro() {
-        this.atingida = false;
-    }
-    
-    public PosicaoTabuleiro(ParteDeEmbarcacao parteDeEmbarcacao) {
-        this.atingida = false;
+    public void atribuiParteDeEmbarcacao(ParteDeEmbarcacao parteDeEmbarcacao) {
         this.parteDeEmbarcacao = parteDeEmbarcacao;
     }
     
     public void registraDisparo() {
         if (!atingida) {
             this.atingida = true;
-            if (parteDeEmbarcacao != null) {
+            if (!verificaSeEstaVazia()) {
                 this.parteDeEmbarcacao.recebeDisparo();
             }
         }
@@ -24,5 +19,9 @@ public class PosicaoTabuleiro {
     
     public boolean verificaSeFoiAtingida() {
         return this.atingida;
+    }
+    
+    public boolean verificaSeEstaVazia() {
+        return parteDeEmbarcacao == null;
     }
 }

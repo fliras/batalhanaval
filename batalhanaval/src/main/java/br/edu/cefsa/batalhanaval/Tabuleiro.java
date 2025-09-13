@@ -30,7 +30,7 @@ public class Tabuleiro {
         }
     }
     
-    public PosicaoTabuleiro obtemPosicao(Coordenada posicao) {
+    public PosicaoTabuleiro obtemPosicao(Coordenadas posicao) {
         if (!verificaSeCoordenadasSaoValidas(posicao)) {
             return null; // futuramente, lançar uma exception
         }
@@ -42,11 +42,11 @@ public class Tabuleiro {
         return posicoes.get(posicaoEmString);
     }
     
-    public boolean verificaSeCoordenadasSaoValidas(Coordenada posicao) {
+    public boolean verificaSeCoordenadasSaoValidas(Coordenadas posicao) {
         return posicao.obtemLinha() <= quantidadeDeLinhasEColunas && posicao.obtemColuna() <= quantidadeDeLinhasEColunas;
     }
     
-    private void alocaNovaPosicao(Coordenada posicao) {
+    private void alocaNovaPosicao(Coordenadas posicao) {
         posicoes.put(posicao.toString(), new PosicaoTabuleiro());
     }
 }

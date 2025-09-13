@@ -1,10 +1,10 @@
 package br.edu.cefsa.batalhanaval;
 
-public class Coordenada {
+public class Coordenadas {
     private final int linha;
     private final int coluna;
     
-    public Coordenada(int linha, int coluna) {
+    public Coordenadas(int linha, int coluna) {
         this.linha = linha;
         this.coluna = coluna;
     }

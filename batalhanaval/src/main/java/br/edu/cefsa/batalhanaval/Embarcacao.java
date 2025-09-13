@@ -25,12 +25,18 @@ public class Embarcacao {
         this.atualizaEstado();
     }
     
-    public void atira(TiposDeTiro tipoDeTiro) {
-        
+    public boolean atira(TiposDeTiro tipoDeTiro) {
+        if (!verificaSePossuiArmaNoArsenal(tipoDeTiro))
+            return false;
+        return arsenal.get(tipoDeTiro).dispara();
     }
     
     public boolean verificaSeEstaOperante() {
         return emOperacao;
+    }
+    
+    public boolean verificaSePossuiArmaNoArsenal(TiposDeTiro tipoDeTiro) {
+        return arsenal.containsKey(tipoDeTiro);
     }
     
     public void atualizaEstado() {

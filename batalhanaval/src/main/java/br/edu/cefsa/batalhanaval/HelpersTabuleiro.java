@@ -9,4 +9,11 @@ public final class HelpersTabuleiro {
                 return false;
         return true;
     }
-}
+    
+    public static Coordenadas sorteiaCoordenadasNoTabuleiro(Tabuleiro tabuleiro) {
+        int qtdeLinhasColunas = tabuleiro.obtemQuantidadeDeLinhasEColunas();
+        int linha = Utils.geraNumeroRandomicoDeXaY(1, qtdeLinhasColunas);
+        int coluna = Utils.geraNumeroRandomicoDeXaY(1, qtdeLinhasColunas);
+        return new Coordenadas(linha, coluna);
+    }
+}   

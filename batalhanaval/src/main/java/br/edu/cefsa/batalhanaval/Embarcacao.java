@@ -49,4 +49,12 @@ public class Embarcacao {
         }
         this.emOperacao = !estaDestruida;
     }
+    
+    public ParteDeEmbarcacao[] obtemPartes() {
+        return (ParteDeEmbarcacao[])partesDaEmbarcacao.toArray();
+    }
+    
+    public int obtemTamanho() {
+        return partesDaEmbarcacao.size();
+    }
 }

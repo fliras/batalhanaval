@@ -43,10 +43,16 @@ public class Tabuleiro {
     }
     
     public boolean verificaSeCoordenadasSaoValidas(Coordenadas posicao) {
-        return posicao.obtemLinha() <= quantidadeDeLinhasEColunas && posicao.obtemColuna() <= quantidadeDeLinhasEColunas;
+        boolean linhaValida = posicao.obtemLinha() > 0 && posicao.obtemLinha() <= quantidadeDeLinhasEColunas;
+        boolean colunaValida = posicao.obtemColuna() > 0 && posicao.obtemColuna() <= quantidadeDeLinhasEColunas;
+        return linhaValida && colunaValida;
     }
     
     private void alocaNovaPosicao(Coordenadas posicao) {
         posicoes.put(posicao.toString(), new PosicaoTabuleiro());
+    }
+    
+    public int obtemQuantidadeDeLinhasEColunas() {
+        return quantidadeDeLinhasEColunas;
     }
 }

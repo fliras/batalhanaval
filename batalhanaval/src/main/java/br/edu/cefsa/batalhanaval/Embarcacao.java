@@ -39,6 +39,12 @@ public class Embarcacao {
         return arsenal.containsKey(tipoDeTiro);
     }
     
+    public boolean verificaSeArmaPossuiMunicao(TiposDeTiro tipoDeTiro) {
+        if (arsenal.containsKey(tipoDeTiro)) return false;
+        int qtdeTirosRestantes = arsenal.get(tipoDeTiro).contaTirosRestantes();
+        return qtdeTirosRestantes > 0 || qtdeTirosRestantes == Constantes.QTDE_ILIMITADA;
+    }
+    
     public void atualizaEstado() {
         boolean estaDestruida = true;
         for (ParteDeEmbarcacao parte : partesDaEmbarcacao) {

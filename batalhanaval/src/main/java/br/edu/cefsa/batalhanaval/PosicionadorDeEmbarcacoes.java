@@ -36,7 +36,7 @@ public class PosicionadorDeEmbarcacoes {
             if (algoritmo.validaSeAplicavel(qtdePartesEmbarcacao, tabuleiro, posicaoRaiz))
                 posicionamentosPossiveis.add(posicionamento);
         }
-        return (PosicionamentosDeEmbarcacao[])posicionamentosPossiveis.toArray();
+        return posicionamentosPossiveis.toArray(PosicionamentosDeEmbarcacao[]::new);
     }
     
     private PosicionamentosDeEmbarcacao sorteiaPosicionamento(PosicionamentosDeEmbarcacao[] posicionamentos) {

@@ -24,6 +24,6 @@ public class Jogador {
     }
     
     public Embarcacao[] obtemEmbarcacoes() {
-        return (Embarcacao[])embarcacoes.toArray(); // retorna um array para não adicionar embarcações à List<> original.
+        return embarcacoes.toArray(Embarcacao[]::new); // retorna um array para não adicionar embarcações à List<> original.
     }
 }

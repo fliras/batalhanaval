@@ -1,6 +1,6 @@
 package br.edu.cefsa.batalhanaval.tabuleiro;
 
-import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeDeJogo;
+import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
 import java.util.HashMap;
 import java.util.List;
 

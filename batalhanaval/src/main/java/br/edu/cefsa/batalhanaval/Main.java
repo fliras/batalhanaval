@@ -3,7 +3,7 @@ package br.edu.cefsa.batalhanaval;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeFacil;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeMedia;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeDificil;
-import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeDeJogo;
+import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
 import br.edu.cefsa.batalhanaval.embarcacoes.Embarcacao;
 import br.edu.cefsa.batalhanaval.embarcacoes.HelpersEmbarcacao;
 import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;

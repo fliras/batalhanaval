@@ -1,4 +1,4 @@
-package br.edu.cefsa.batalhanaval.dificuldadesDeJogo;
+package br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos;
 
 public abstract class DificuldadeDeJogo {
     protected TiposDeDificuldadeDeJogo tipoDificuldade;

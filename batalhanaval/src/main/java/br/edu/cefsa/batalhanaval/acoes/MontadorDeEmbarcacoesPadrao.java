@@ -1,7 +1,7 @@
 package br.edu.cefsa.batalhanaval.acoes;
 
 import br.edu.cefsa.batalhanaval.acoes.contratos.MontadorDeEmbarcacoes;
-import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeDeJogo;
+import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
 import br.edu.cefsa.batalhanaval.embarcacoes.Embarcacao;
 import br.edu.cefsa.batalhanaval.embarcacoes.HelpersEmbarcacao;
 import br.edu.cefsa.batalhanaval.embarcacoes.TiposDeEmbarcacao;

@@ -1,5 +1,8 @@
 package br.edu.cefsa.batalhanaval.dificuldadesDeJogo;
 
+import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.TiposDeDificuldadeDeJogo;
+import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
+
 public class DificuldadeMedia extends DificuldadeDeJogo {
     private static DificuldadeMedia instancia;
     

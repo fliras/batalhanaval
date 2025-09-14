@@ -1,7 +1,7 @@
 package br.edu.cefsa.batalhanaval.embarcacoes;
 
 import br.edu.cefsa.batalhanaval.utils.Constantes;
-import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeDeJogo;
+import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
 import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
 import br.edu.cefsa.batalhanaval.armas.ArmaPadrao;
 import java.util.ArrayList;

@@ -1,5 +1,7 @@
 package br.edu.cefsa.batalhanaval.dificuldadesDeJogo;
 
+import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.TiposDeDificuldadeDeJogo;
+import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
 import br.edu.cefsa.batalhanaval.utils.Constantes;
 
 public class DificuldadeFacil extends DificuldadeDeJogo {

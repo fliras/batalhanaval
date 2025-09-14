@@ -1,6 +1,7 @@
 package br.edu.cefsa.batalhanaval;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Tabuleiro {
     private final DificuldadeDeJogo dificuldade;
@@ -40,6 +41,13 @@ public class Tabuleiro {
         }
         alocaNovaPosicao(posicao);
         return posicoes.get(posicaoEmString);
+    }
+    
+    public boolean verificaSeListaDeCoordenadasSaoValidas(List<Coordenadas> posicoes) {
+        for (Coordenadas posicao : posicoes)
+            if (!verificaSeCoordenadasSaoValidas(posicao))
+                return false;
+        return true;
     }
     
     public boolean verificaSeCoordenadasSaoValidas(Coordenadas posicao) {

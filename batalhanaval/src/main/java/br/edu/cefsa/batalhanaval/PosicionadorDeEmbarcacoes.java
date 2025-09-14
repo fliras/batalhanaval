@@ -18,7 +18,7 @@ public class PosicionadorDeEmbarcacoes {
     }
     
     private void posicionaEmbarcacao(Tabuleiro tabuleiro, Embarcacao embarcacao) {
-        Coordenadas posicaoRaizAleatoria = HelpersTabuleiro.sorteiaCoordenadasNoTabuleiro(tabuleiro);
+        Coordenadas posicaoRaizAleatoria = HelpersTabuleiro.sorteiaCoordenadas(tabuleiro);
         PosicionamentosDeEmbarcacao[] posicionamentos = mapeiaPosicionamentosPossiveis(embarcacao.obtemTamanho(), tabuleiro, posicaoRaizAleatoria);
         if (posicionamentos.length > 0) {
             PosicionamentosDeEmbarcacao posicionamentoEscolhido = sorteiaPosicionamento(posicionamentos);

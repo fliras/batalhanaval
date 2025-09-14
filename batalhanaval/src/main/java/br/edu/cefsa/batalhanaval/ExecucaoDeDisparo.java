@@ -13,7 +13,7 @@ public class ExecucaoDeDisparo {
             return false;
         
         List<Coordenadas> posicoesQueSeraoAtingidas = HelpersTiros.projetaTiroPorTipo(tipoTiro, posicaoAlvo);
-        if (!HelpersTabuleiro.verificaSePosicoesSaoValidas(posicoesQueSeraoAtingidas, tabuleiroAlvo))
+        if (!tabuleiroAlvo.verificaSeListaDeCoordenadasSaoValidas(posicoesQueSeraoAtingidas))
             return false;
         
         if (!embarcacao.atira(tipoTiro))

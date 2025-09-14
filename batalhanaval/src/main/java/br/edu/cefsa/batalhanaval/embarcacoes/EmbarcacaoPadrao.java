@@ -5,6 +5,7 @@ import br.edu.cefsa.batalhanaval.utils.Constantes;
 import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
 import br.edu.cefsa.batalhanaval.armas.contratos.Arma;
 import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.ParteDeEmbarcacao;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class EmbarcacaoPadrao implements Embarcacao {
     private TiposDeEmbarcacao tipoEmbarcacao;
     private boolean emOperacao;
     private HashMap<TiposDeTiro, Arma> arsenal;
-    private List<ParteDeEmbarcacaoPadrao> partesDaEmbarcacao;
+    private List<ParteDeEmbarcacao> partesDaEmbarcacao;
     
     public EmbarcacaoPadrao(TiposDeEmbarcacao tipoEmbarcacao) {
         this.tipoEmbarcacao = tipoEmbarcacao;
@@ -25,9 +26,9 @@ public class EmbarcacaoPadrao implements Embarcacao {
     }
     
     @Override
-    public void atribuiPartesDeEmbarcacao(List<ParteDeEmbarcacaoPadrao> partesDaEmbarcacao) {
+    public void atribuiPartesDeEmbarcacao(List<ParteDeEmbarcacao> partesDaEmbarcacao) {
         this.partesDaEmbarcacao = partesDaEmbarcacao;
-        for (ParteDeEmbarcacaoPadrao parte : partesDaEmbarcacao)
+        for (ParteDeEmbarcacao parte : partesDaEmbarcacao)
             parte.associaEmbarcacao(this);
         this.atualizaEstado();
     }
@@ -59,7 +60,7 @@ public class EmbarcacaoPadrao implements Embarcacao {
     @Override
     public void atualizaEstado() {
         boolean estaDestruida = true;
-        for (ParteDeEmbarcacaoPadrao parte : partesDaEmbarcacao) {
+        for (ParteDeEmbarcacao parte : partesDaEmbarcacao) {
             if (parte.verificaSeEstaOperante()) {
                 estaDestruida = false;
                 break;
@@ -69,8 +70,8 @@ public class EmbarcacaoPadrao implements Embarcacao {
     }
     
     @Override
-    public ParteDeEmbarcacaoPadrao[] obtemPartes() {
-        return partesDaEmbarcacao.toArray(ParteDeEmbarcacaoPadrao[]::new);
+    public ParteDeEmbarcacao[] obtemPartes() {
+        return partesDaEmbarcacao.toArray(ParteDeEmbarcacao[]::new);
     }
     
     @Override

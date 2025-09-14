@@ -1,7 +1,7 @@
 package br.edu.cefsa.batalhanaval.acoes;
 
 import br.edu.cefsa.batalhanaval.acoes.contratos.ChecadorDeVencedor;
-import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
 import br.edu.cefsa.batalhanaval.main.Jogador;
 
 public class ChecadorDeVencedorPadrao implements ChecadorDeVencedor {
@@ -16,8 +16,8 @@ public class ChecadorDeVencedorPadrao implements ChecadorDeVencedor {
         return jogador2;
     }
     
-    private boolean validaSeHaEmbarcacaoOperante(EmbarcacaoPadrao[] embarcacoes) {
-        for (EmbarcacaoPadrao embarcacao : embarcacoes)
+    private boolean validaSeHaEmbarcacaoOperante(Embarcacao[] embarcacoes) {
+        for (Embarcacao embarcacao : embarcacoes)
             if (embarcacao.verificaSeEstaOperante())
                 return true;
         return false;

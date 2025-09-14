@@ -2,7 +2,7 @@ package br.edu.cefsa.batalhanaval.acoes;
 
 import br.edu.cefsa.batalhanaval.acoes.contratos.MontadorDeEmbarcacoes;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
-import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
 import br.edu.cefsa.batalhanaval.embarcacoes.HelpersEmbarcacao;
 import br.edu.cefsa.batalhanaval.embarcacoes.contratos.TiposDeEmbarcacao;
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ public class MontadorDeEmbarcacoesPadrao implements MontadorDeEmbarcacoes {
     }
     
     @Override
-    public List<EmbarcacaoPadrao> monta() {
-        List<EmbarcacaoPadrao> embarcacoes = new ArrayList<>();
+    public List<Embarcacao> monta() {
+        List<Embarcacao> embarcacoes = new ArrayList<>();
         for (int i = 0; i < dificuldadeJogo.obtemQtdePortaAvioes(); i++) {
             embarcacoes.add(HelpersEmbarcacao.criaEmbarcacao(TiposDeEmbarcacao.PORTA_AVIOES, dificuldadeJogo));
         }

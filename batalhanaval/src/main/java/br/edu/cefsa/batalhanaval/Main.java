@@ -5,6 +5,7 @@ import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeMedia;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeDificil;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
 import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
 import br.edu.cefsa.batalhanaval.embarcacoes.HelpersEmbarcacao;
 import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
 import br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos.DadosExecucaoDisparo;
@@ -20,7 +21,7 @@ import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionadorDeEmb
 import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionamentoEmbarcacaoVerticalParaBaixo;
 import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.AlgoritmoPosicionamentoEmbarcacao;
 import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionamentoEmbarcacaoVerticalParaCima;
-import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionamentosDeEmbarcacao;
+import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.PosicionamentosDeEmbarcacao;
 import br.edu.cefsa.batalhanaval.main.JanelaDoTabuleiro;
 import br.edu.cefsa.batalhanaval.main.Jogador;
 import java.util.HashMap;
@@ -55,8 +56,8 @@ public class Main {
         TabuleiroPadrao tabuleiroJogador2 = new TabuleiroPadrao(dificuldade);
 
         MontadorDeEmbarcacoesPadrao montagemEmbarcacoes = new MontadorDeEmbarcacoesPadrao(dificuldade);
-        List<EmbarcacaoPadrao> embarcacoesJogador1 = montagemEmbarcacoes.monta();
-        List<EmbarcacaoPadrao> embarcacoesJogador2 = montagemEmbarcacoes.monta();
+        List<Embarcacao> embarcacoesJogador1 = montagemEmbarcacoes.monta();
+        List<Embarcacao> embarcacoesJogador2 = montagemEmbarcacoes.monta();
 
         jogadorAtacante = new Jogador(embarcacoesJogador1, tabuleiroJogador1);
         jogadorAlvo = new Jogador(embarcacoesJogador2, tabuleiroJogador2);
@@ -79,14 +80,14 @@ public class Main {
         janelaTabuleiroAlvo.atualizaTela();
         
         while (true) {
-            List<EmbarcacaoPadrao> embarcacoesDisponiveis = HelpersEmbarcacao.filtraEmbarcacoesOperantes(jogadorAtacante.obtemEmbarcacoes());
+            List<Embarcacao> embarcacoesDisponiveis = HelpersEmbarcacao.filtraEmbarcacoesOperantes(jogadorAtacante.obtemEmbarcacoes());
             String opcoesDoPrompt = "";
             for (int i = 0; i < embarcacoesDisponiveis.size(); i++) {
                 opcoesDoPrompt += String.format("%d - %s\n", (i + 1), embarcacoesDisponiveis.get(i).obtemNome());
             }
             int idEmbarcacao = Integer.parseInt(montaJanelaDeInput("Batalha Naval", "Escolha uma embarcação para atirar:\n"
                     + opcoesDoPrompt)) - 1;
-            EmbarcacaoPadrao embarcacaoEscolhida = embarcacoesDisponiveis.get(idEmbarcacao);
+            Embarcacao embarcacaoEscolhida = embarcacoesDisponiveis.get(idEmbarcacao);
             
             TiposDeTiro[] tirosDisponiveis = embarcacaoEscolhida.listaTiposDeTiroDisponiveis();
             opcoesDoPrompt = "";

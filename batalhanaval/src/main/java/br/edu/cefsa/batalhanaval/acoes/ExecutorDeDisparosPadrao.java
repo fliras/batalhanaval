@@ -3,19 +3,19 @@ package br.edu.cefsa.batalhanaval.acoes;
 import br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos.DadosExecucaoDisparo;
 import br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos.ExecutorDeDisparos;
 import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
-import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
 import br.edu.cefsa.batalhanaval.armas.HelpersTiros;
-import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
 import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
 import java.util.List;
 
 public class ExecutorDeDisparosPadrao implements ExecutorDeDisparos {
     @Override
     public boolean executa(DadosExecucaoDisparo dadosDisparo) {
-        EmbarcacaoPadrao embarcacao = dadosDisparo.obtemEmbarcacao();
+        Embarcacao embarcacao = dadosDisparo.obtemEmbarcacao();
         TiposDeTiro tipoTiro = dadosDisparo.obtemTipoTiro();
         Coordenadas posicaoAlvo = dadosDisparo.obtemPosicaoAlvo();
-        TabuleiroPadrao tabuleiroAlvo = dadosDisparo.obtemTabuleiroAlvo();
+        Tabuleiro tabuleiroAlvo = dadosDisparo.obtemTabuleiroAlvo();
         
         if (!embarcacao.verificaSePossuiArmaNoArsenal(tipoTiro))
             return false;

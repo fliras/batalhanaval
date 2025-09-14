@@ -1,11 +1,12 @@
 package br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes;
 
+import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.PosicionamentosDeEmbarcacao;
 import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.AlgoritmoPosicionamentoEmbarcacao;
 import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.PosicionadorDeEmbarcacoes;
 import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
-import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
 import br.edu.cefsa.batalhanaval.tabuleiro.HelpersTabuleiro;
-import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
 import br.edu.cefsa.batalhanaval.utils.Utils;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,13 +20,13 @@ public class PosicionadorDeEmbarcacoesPadrao implements PosicionadorDeEmbarcacoe
     }
     
     @Override
-    public void posiciona(TabuleiroPadrao tabuleiro, EmbarcacaoPadrao[] embarcacoes) {
-        for (EmbarcacaoPadrao e : embarcacoes) {
+    public void posiciona(Tabuleiro tabuleiro, Embarcacao[] embarcacoes) {
+        for (Embarcacao e : embarcacoes) {
             posicionaEmbarcacao(tabuleiro, e);
         }
     }
     
-    private void posicionaEmbarcacao(TabuleiroPadrao tabuleiro, EmbarcacaoPadrao embarcacao) {
+    private void posicionaEmbarcacao(Tabuleiro tabuleiro, Embarcacao embarcacao) {
         Coordenadas posicaoRaizAleatoria = HelpersTabuleiro.sorteiaCoordenadas(tabuleiro);
         PosicionamentosDeEmbarcacao[] posicionamentos = mapeiaPosicionamentosPossiveis(embarcacao.obtemTamanho(), tabuleiro, posicaoRaizAleatoria);
         if (posicionamentos.length > 0) {
@@ -37,7 +38,7 @@ public class PosicionadorDeEmbarcacoesPadrao implements PosicionadorDeEmbarcacoe
         }
     }
     
-    private PosicionamentosDeEmbarcacao[] mapeiaPosicionamentosPossiveis(int qtdePartesEmbarcacao, TabuleiroPadrao tabuleiro, Coordenadas posicaoRaiz) {
+    private PosicionamentosDeEmbarcacao[] mapeiaPosicionamentosPossiveis(int qtdePartesEmbarcacao, Tabuleiro tabuleiro, Coordenadas posicaoRaiz) {
         List<PosicionamentosDeEmbarcacao> posicionamentosPossiveis = new ArrayList<>();
         for (PosicionamentosDeEmbarcacao posicionamento : algoritmosPosicionamento.keySet()) {
             AlgoritmoPosicionamentoEmbarcacao algoritmo = algoritmosPosicionamento.get(posicionamento);

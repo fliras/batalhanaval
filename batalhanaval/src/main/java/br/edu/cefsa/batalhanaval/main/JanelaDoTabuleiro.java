@@ -1,6 +1,6 @@
 package br.edu.cefsa.batalhanaval.main;
 
-import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
 import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
 import br.edu.cefsa.batalhanaval.tabuleiro.PosicaoTabuleiroPadrao;
 import java.awt.BorderLayout;
@@ -14,17 +14,16 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.Box;
 
 public class JanelaDoTabuleiro extends JFrame {
     private JPanel gridPanel;
     private JPanel[][] celulas;
-    private TabuleiroPadrao tabuleiro;
+    private Tabuleiro tabuleiro;
     private int qtdeLinhas;
     private int qtdeColunas;
 
-    public JanelaDoTabuleiro(TabuleiroPadrao tabuleiro) {
+    public JanelaDoTabuleiro(Tabuleiro tabuleiro) {
         this.tabuleiro = tabuleiro;
         qtdeLinhas = qtdeColunas = tabuleiro.obtemQuantidadeDeLinhasEColunas();
         this.celulas = new JPanel[qtdeLinhas][qtdeColunas];

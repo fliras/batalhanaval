@@ -1,4 +1,4 @@
-package br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes;
+package br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes;
 
 public enum PosicionamentosDeEmbarcacao {
     VERTICAL_PARA_BAIXO,

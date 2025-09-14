@@ -1,9 +1,10 @@
 package br.edu.cefsa.batalhanaval.embarcacoes;
 
 import br.edu.cefsa.batalhanaval.embarcacoes.contratos.ParteDeEmbarcacao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
 
 public class ParteDeEmbarcacaoPadrao implements ParteDeEmbarcacao {
-    private EmbarcacaoPadrao embarcacaoAssociada;
+    private Embarcacao embarcacaoAssociada;
     private boolean estaOperante;
     
     public ParteDeEmbarcacaoPadrao() {
@@ -11,7 +12,7 @@ public class ParteDeEmbarcacaoPadrao implements ParteDeEmbarcacao {
     }
     
     @Override
-    public void associaEmbarcacao(EmbarcacaoPadrao embarcacaoAssociada) {
+    public void associaEmbarcacao(Embarcacao embarcacaoAssociada) {
         this.embarcacaoAssociada = embarcacaoAssociada;
     }
     

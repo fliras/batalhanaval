@@ -2,13 +2,13 @@ package br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes;
 
 import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.AlgoritmoPosicionamentoEmbarcacao;
 import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
-import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
-import br.edu.cefsa.batalhanaval.embarcacoes.ParteDeEmbarcacaoPadrao;
-import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.ParteDeEmbarcacao;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
 
 public class PosicionamentoEmbarcacaoHorizontalParaDireita implements AlgoritmoPosicionamentoEmbarcacao {
     @Override
-    public boolean validaSeAplicavel(int qtdePartesEmbarcacao, TabuleiroPadrao tabuleiro, Coordenadas posicaoRaiz) {
+    public boolean validaSeAplicavel(int qtdePartesEmbarcacao, Tabuleiro tabuleiro, Coordenadas posicaoRaiz) {
         int colunaInicial = posicaoRaiz.obtemColuna();
         for (int coluna = colunaInicial; coluna < (colunaInicial + qtdePartesEmbarcacao); coluna++) {
             Coordenadas posicaoEmAnalise = new Coordenadas(posicaoRaiz.obtemLinha(), coluna);
@@ -21,8 +21,8 @@ public class PosicionamentoEmbarcacaoHorizontalParaDireita implements AlgoritmoP
     }
 
     @Override
-    public void posiciona(EmbarcacaoPadrao embarcacao, TabuleiroPadrao tabuleiro, Coordenadas posicaoRaiz) {
-        ParteDeEmbarcacaoPadrao[] partesEmbarcacao = embarcacao.obtemPartes();
+    public void posiciona(Embarcacao embarcacao, Tabuleiro tabuleiro, Coordenadas posicaoRaiz) {
+        ParteDeEmbarcacao[] partesEmbarcacao = embarcacao.obtemPartes();
         int tamanhoEmbarcacao = embarcacao.obtemTamanho();
         int colunaInicial = posicaoRaiz.obtemColuna();
         for (int coluna = colunaInicial, iParte = 0; coluna < (colunaInicial + tamanhoEmbarcacao); coluna++) {

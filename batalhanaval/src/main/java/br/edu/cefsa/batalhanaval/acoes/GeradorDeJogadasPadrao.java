@@ -3,10 +3,10 @@ package br.edu.cefsa.batalhanaval.acoes;
 import br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos.DadosExecucaoDisparo;
 import br.edu.cefsa.batalhanaval.acoes.contratos.GeradorDeJogadas;
 import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
-import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
 import br.edu.cefsa.batalhanaval.embarcacoes.HelpersEmbarcacao;
 import br.edu.cefsa.batalhanaval.tabuleiro.HelpersTabuleiro;
-import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
 import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
 import br.edu.cefsa.batalhanaval.utils.Utils;
 import java.util.ArrayList;
@@ -14,28 +14,28 @@ import java.util.List;
 
 public class GeradorDeJogadasPadrao implements GeradorDeJogadas {
     @Override
-    public DadosExecucaoDisparo gera(EmbarcacaoPadrao[] embarcacoesAtacantes, TabuleiroPadrao tabuleiroAlvo) {
-        EmbarcacaoPadrao embarcacaoSorteada = sorteiaEmbarcacao(embarcacoesAtacantes);
+    public DadosExecucaoDisparo gera(Embarcacao[] embarcacoesAtacantes, Tabuleiro tabuleiroAlvo) {
+        Embarcacao embarcacaoSorteada = sorteiaEmbarcacao(embarcacoesAtacantes);
         TiposDeTiro tipoTiroSorteado = sorteiaTipoDeTiro(embarcacaoSorteada);
         Coordenadas coordenadasAleatorias = HelpersTabuleiro.sorteiaCoordenadas(tabuleiroAlvo);
         return new DadosExecucaoDisparo(embarcacaoSorteada, tipoTiroSorteado, coordenadasAleatorias, tabuleiroAlvo);
     }
     
-    private EmbarcacaoPadrao sorteiaEmbarcacao(EmbarcacaoPadrao[] embarcacoes) {
-        List<EmbarcacaoPadrao> embarcacoesOperantes = HelpersEmbarcacao.filtraEmbarcacoesOperantes(embarcacoes);
+    private Embarcacao sorteiaEmbarcacao(Embarcacao[] embarcacoes) {
+        List<Embarcacao> embarcacoesOperantes = HelpersEmbarcacao.filtraEmbarcacoesOperantes(embarcacoes);
         int qtdeEmbarcacoes = embarcacoesOperantes.size();
         int indexSorteado = Utils.geraNumeroRandomicoDeXaY(0, qtdeEmbarcacoes - 1);
         return embarcacoesOperantes.get(indexSorteado);
     }
     
-    private TiposDeTiro sorteiaTipoDeTiro(EmbarcacaoPadrao embarcacao) {
+    private TiposDeTiro sorteiaTipoDeTiro(Embarcacao embarcacao) {
         List<TiposDeTiro> tiposDisponiveis = filtraTiposDeTiroDisponiveis(embarcacao);
         int qtdeTiros = tiposDisponiveis.size();
         int indexSorteado = Utils.geraNumeroRandomicoDeXaY(0, qtdeTiros - 1);
         return tiposDisponiveis.get(indexSorteado);
     }
     
-    private List<TiposDeTiro> filtraTiposDeTiroDisponiveis(EmbarcacaoPadrao embarcacao) {
+    private List<TiposDeTiro> filtraTiposDeTiroDisponiveis(Embarcacao embarcacao) {
         List<TiposDeTiro> tiposDisponiveis = new ArrayList<>();
         for (TiposDeTiro tipo: TiposDeTiro.values()) {
             if (embarcacao.verificaSePossuiArmaNoArsenal(tipo) && embarcacao.verificaSeArmaPossuiMunicao(tipo))

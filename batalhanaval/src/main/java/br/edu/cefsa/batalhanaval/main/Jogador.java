@@ -1,31 +1,31 @@
 package br.edu.cefsa.batalhanaval.main;
 
-import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
-import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
 import java.util.List;
 
 public class Jogador {
-    private List<EmbarcacaoPadrao> embarcacoes;
-    private TabuleiroPadrao tabuleiro;
+    private List<Embarcacao> embarcacoes;
+    private Tabuleiro tabuleiro;
     
-    public Jogador(List<EmbarcacaoPadrao> embarcacoes, TabuleiroPadrao tabuleiro) {
+    public Jogador(List<Embarcacao> embarcacoes, Tabuleiro tabuleiro) {
         this.embarcacoes = embarcacoes;
         this.tabuleiro = tabuleiro;
     }
     
-    protected void atribuiTabuleiro(TabuleiroPadrao tabuleiro) {
+    protected void atribuiTabuleiro(Tabuleiro tabuleiro) {
         this.tabuleiro = tabuleiro;
     }
     
-    protected void atribuiEmbarcacoes(List<EmbarcacaoPadrao> embarcacoes) {
+    protected void atribuiEmbarcacoes(List<Embarcacao> embarcacoes) {
         this.embarcacoes = embarcacoes;
     }
     
-    public TabuleiroPadrao obtemTabuleiro() {
+    public Tabuleiro obtemTabuleiro() {
         return tabuleiro;
     }
     
-    public EmbarcacaoPadrao[] obtemEmbarcacoes() {
-        return embarcacoes.toArray(EmbarcacaoPadrao[]::new); // retorna um array para não adicionar embarcações à List<> original.
+    public Embarcacao[] obtemEmbarcacoes() {
+        return embarcacoes.toArray(Embarcacao[]::new); // retorna um array para não adicionar embarcações à List<> original.
     }
 }

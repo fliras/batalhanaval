@@ -2,6 +2,8 @@ package br.edu.cefsa.batalhanaval.embarcacoes;
 
 import br.edu.cefsa.batalhanaval.armas.ArmaPadrao;
 import br.edu.cefsa.batalhanaval.embarcacoes.contratos.TiposDeEmbarcacao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.ParteDeEmbarcacao;
 import br.edu.cefsa.batalhanaval.utils.Constantes;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
 import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
@@ -12,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public final class HelpersEmbarcacao {
-    public static EmbarcacaoPadrao criaEmbarcacao(TiposDeEmbarcacao tipo, DificuldadeDeJogo dificuldade) {
+    public static Embarcacao criaEmbarcacao(TiposDeEmbarcacao tipo, DificuldadeDeJogo dificuldade) {
         return switch (tipo) {
             case PORTA_AVIOES -> criaPortaAvioes(dificuldade);
             case CRUZADOR -> criaCruzador(dificuldade);
@@ -23,43 +25,43 @@ public final class HelpersEmbarcacao {
         };
     }
     
-    private static EmbarcacaoPadrao criaPortaAvioes(DificuldadeDeJogo dificuldade) {
-        EmbarcacaoPadrao portaAvioes = new EmbarcacaoPadrao(TiposDeEmbarcacao.PORTA_AVIOES);
+    private static Embarcacao criaPortaAvioes(DificuldadeDeJogo dificuldade) {
+        Embarcacao portaAvioes = new EmbarcacaoPadrao(TiposDeEmbarcacao.PORTA_AVIOES);
         portaAvioes.atribuiArsenal(criaArsenalPorTipoDeEmbarcacao(TiposDeEmbarcacao.PORTA_AVIOES, dificuldade));
         portaAvioes.atribuiPartesDeEmbarcacao(criaPartesPorTipoDeEmbarcacao(TiposDeEmbarcacao.PORTA_AVIOES));
         return portaAvioes;
     }
     
-    private static EmbarcacaoPadrao criaCruzador(DificuldadeDeJogo dificuldade) {
-        EmbarcacaoPadrao cruzador = new EmbarcacaoPadrao(TiposDeEmbarcacao.CRUZADOR);
+    private static Embarcacao criaCruzador(DificuldadeDeJogo dificuldade) {
+        Embarcacao cruzador = new EmbarcacaoPadrao(TiposDeEmbarcacao.CRUZADOR);
         cruzador.atribuiArsenal(criaArsenalPorTipoDeEmbarcacao(TiposDeEmbarcacao.CRUZADOR, dificuldade));
         cruzador.atribuiPartesDeEmbarcacao(criaPartesPorTipoDeEmbarcacao(TiposDeEmbarcacao.CRUZADOR));
         return cruzador;
     }
     
-    private static EmbarcacaoPadrao criaFragata(DificuldadeDeJogo dificuldade) {
-        EmbarcacaoPadrao fragata = new EmbarcacaoPadrao(TiposDeEmbarcacao.FRAGATA);
+    private static Embarcacao criaFragata(DificuldadeDeJogo dificuldade) {
+        Embarcacao fragata = new EmbarcacaoPadrao(TiposDeEmbarcacao.FRAGATA);
         fragata.atribuiArsenal(criaArsenalPorTipoDeEmbarcacao(TiposDeEmbarcacao.FRAGATA, dificuldade));
         fragata.atribuiPartesDeEmbarcacao(criaPartesPorTipoDeEmbarcacao(TiposDeEmbarcacao.FRAGATA));
         return fragata;
     }
     
-    private static EmbarcacaoPadrao criaDestroier(DificuldadeDeJogo dificuldade) {
-        EmbarcacaoPadrao destroier = new EmbarcacaoPadrao(TiposDeEmbarcacao.DESTROIER);
+    private static Embarcacao criaDestroier(DificuldadeDeJogo dificuldade) {
+        Embarcacao destroier = new EmbarcacaoPadrao(TiposDeEmbarcacao.DESTROIER);
         destroier.atribuiArsenal(criaArsenalPorTipoDeEmbarcacao(TiposDeEmbarcacao.DESTROIER, dificuldade));
         destroier.atribuiPartesDeEmbarcacao(criaPartesPorTipoDeEmbarcacao(TiposDeEmbarcacao.DESTROIER));
         return destroier;
     }
     
-    private static EmbarcacaoPadrao criaSubmarino(DificuldadeDeJogo dificuldade) {
-        EmbarcacaoPadrao submarino = new EmbarcacaoPadrao(TiposDeEmbarcacao.SUBMARINO);
+    private static Embarcacao criaSubmarino(DificuldadeDeJogo dificuldade) {
+        Embarcacao submarino = new EmbarcacaoPadrao(TiposDeEmbarcacao.SUBMARINO);
         submarino.atribuiArsenal(criaArsenalPorTipoDeEmbarcacao(TiposDeEmbarcacao.SUBMARINO, dificuldade));
         submarino.atribuiPartesDeEmbarcacao(criaPartesPorTipoDeEmbarcacao(TiposDeEmbarcacao.SUBMARINO));
         return submarino;
     }
     
-    private static List<ParteDeEmbarcacaoPadrao> criaPartesPorTipoDeEmbarcacao(TiposDeEmbarcacao tipo) {
-        List<ParteDeEmbarcacaoPadrao> partes = new ArrayList<>();
+    private static List<ParteDeEmbarcacao> criaPartesPorTipoDeEmbarcacao(TiposDeEmbarcacao tipo) {
+        List<ParteDeEmbarcacao> partes = new ArrayList<>();
         int totalDePartes = tipo.obtemQtdeDePartes();
         for (int i = 0; i < totalDePartes; i++)
             partes.add(new ParteDeEmbarcacaoPadrao());
@@ -78,7 +80,7 @@ public final class HelpersEmbarcacao {
         return arsenal;
     }
     
-    public static List<EmbarcacaoPadrao> filtraEmbarcacoesOperantes(EmbarcacaoPadrao[] embarcacoes) {
+    public static List<Embarcacao> filtraEmbarcacoesOperantes(Embarcacao[] embarcacoes) {
         return Arrays.stream(embarcacoes)
             .filter(e -> e.verificaSeEstaOperante())
             .toList();

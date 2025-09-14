@@ -1,9 +1,11 @@
 package br.edu.cefsa.batalhanaval.acoes;
 
+import br.edu.cefsa.batalhanaval.acoes.contratos.ChecadorDeVencedor;
 import br.edu.cefsa.batalhanaval.embarcacoes.Embarcacao;
 import br.edu.cefsa.batalhanaval.main.Jogador;
 
-public class ChecagemDeVencedor {
+public class ChecadorDeVencedorPadrao implements ChecadorDeVencedor {
+    @Override
     public Jogador checa(Jogador jogador1, Jogador jogador2) {
         boolean jogador1EstaNoJogo = validaSeHaEmbarcacaoOperante(jogador1.obtemEmbarcacoes());
         boolean jogador2EstaNoJogo = validaSeHaEmbarcacaoOperante(jogador2.obtemEmbarcacoes());

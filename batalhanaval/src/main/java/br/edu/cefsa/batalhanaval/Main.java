@@ -6,19 +6,19 @@ import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeDificil;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeDeJogo;
 import br.edu.cefsa.batalhanaval.embarcacoes.Embarcacao;
 import br.edu.cefsa.batalhanaval.embarcacoes.HelpersEmbarcacao;
-import br.edu.cefsa.batalhanaval.armas.TiposDeTiro;
-import br.edu.cefsa.batalhanaval.acoes.execucaoDeDisparos.DadosExecucaoDisparo;
+import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
+import br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos.DadosExecucaoDisparo;
 import br.edu.cefsa.batalhanaval.tabuleiro.Tabuleiro;
 import br.edu.cefsa.batalhanaval.tabuleiro.Coordenadas;
-import br.edu.cefsa.batalhanaval.acoes.ChecagemDeVencedor;
-import br.edu.cefsa.batalhanaval.acoes.GeradorDeJogadas;
-import br.edu.cefsa.batalhanaval.acoes.execucaoDeDisparos.ExecucaoDeDisparo;
-import br.edu.cefsa.batalhanaval.acoes.MontagemEmbarcacoes;
+import br.edu.cefsa.batalhanaval.acoes.ChecadorDeVencedorPadrao;
+import br.edu.cefsa.batalhanaval.acoes.GeradorDeJogadasPadrao;
+import br.edu.cefsa.batalhanaval.acoes.ExecutorDeDisparosPadrao;
+import br.edu.cefsa.batalhanaval.acoes.MontadorDeEmbarcacoesPadrao;
 import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionamentoEmbarcacaoHorizontalParaDireita;
 import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionamentoEmbarcacaoHorizontalParaEsquerda;
-import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionadorDeEmbarcacoes;
+import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionadorDeEmbarcacoesPadrao;
 import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionamentoEmbarcacaoVerticalParaBaixo;
-import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.AlgoritmoPosicionamentoEmbarcacao;
+import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.AlgoritmoPosicionamentoEmbarcacao;
 import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionamentoEmbarcacaoVerticalParaCima;
 import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionamentosDeEmbarcacao;
 import br.edu.cefsa.batalhanaval.main.JanelaDoTabuleiro;
@@ -36,12 +36,12 @@ public class Main {
             DificuldadeDificil.obtem()
         };
         
-        ExecucaoDeDisparo execucaoDisparo = new ExecucaoDeDisparo();
+        ExecutorDeDisparosPadrao execucaoDisparo = new ExecutorDeDisparosPadrao();
         Jogador jogadorAtacante = null;
         Jogador jogadorAlvo = null;
         
-        ChecagemDeVencedor checagemVencedor = new ChecagemDeVencedor();
-        GeradorDeJogadas geradorJogadas = new GeradorDeJogadas();
+        ChecadorDeVencedorPadrao checagemVencedor = new ChecadorDeVencedorPadrao();
+        GeradorDeJogadasPadrao geradorJogadas = new GeradorDeJogadasPadrao();
         
         JanelaDoTabuleiro janelaTabuleiroAtacante;
         JanelaDoTabuleiro janelaTabuleiroAlvo;
@@ -54,7 +54,7 @@ public class Main {
         Tabuleiro tabuleiroJogador1 = new Tabuleiro(dificuldade);
         Tabuleiro tabuleiroJogador2 = new Tabuleiro(dificuldade);
 
-        MontagemEmbarcacoes montagemEmbarcacoes = new MontagemEmbarcacoes(dificuldade);
+        MontadorDeEmbarcacoesPadrao montagemEmbarcacoes = new MontadorDeEmbarcacoesPadrao(dificuldade);
         List<Embarcacao> embarcacoesJogador1 = montagemEmbarcacoes.monta();
         List<Embarcacao> embarcacoesJogador2 = montagemEmbarcacoes.monta();
 
@@ -67,7 +67,7 @@ public class Main {
             put(PosicionamentosDeEmbarcacao.VERTICAL_PARA_BAIXO, new PosicionamentoEmbarcacaoVerticalParaBaixo());
             put(PosicionamentosDeEmbarcacao.VERTICAL_PARA_CIMA, new PosicionamentoEmbarcacaoVerticalParaCima());
         }};
-        PosicionadorDeEmbarcacoes posicionador = new PosicionadorDeEmbarcacoes(algoritmosPosicionamento);
+        PosicionadorDeEmbarcacoesPadrao posicionador = new PosicionadorDeEmbarcacoesPadrao(algoritmosPosicionamento);
         posicionador.posiciona(jogadorAtacante.obtemTabuleiro(), jogadorAtacante.obtemEmbarcacoes());
         posicionador.posiciona(jogadorAlvo.obtemTabuleiro(), jogadorAlvo.obtemEmbarcacoes());
 

@@ -1,4 +1,4 @@
-package br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes;
+package br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes;
 
 import br.edu.cefsa.batalhanaval.tabuleiro.Coordenadas;
 import br.edu.cefsa.batalhanaval.embarcacoes.Embarcacao;

@@ -1,5 +1,7 @@
 package br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes;
 
+import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.AlgoritmoPosicionamentoEmbarcacao;
+import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.PosicionadorDeEmbarcacoes;
 import br.edu.cefsa.batalhanaval.tabuleiro.Coordenadas;
 import br.edu.cefsa.batalhanaval.embarcacoes.Embarcacao;
 import br.edu.cefsa.batalhanaval.tabuleiro.HelpersTabuleiro;
@@ -9,13 +11,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class PosicionadorDeEmbarcacoes {
+public class PosicionadorDeEmbarcacoesPadrao implements PosicionadorDeEmbarcacoes {
     private final HashMap<PosicionamentosDeEmbarcacao, AlgoritmoPosicionamentoEmbarcacao> algoritmosPosicionamento;
     
-    public PosicionadorDeEmbarcacoes(HashMap<PosicionamentosDeEmbarcacao, AlgoritmoPosicionamentoEmbarcacao> algoritmosPosicionamento) {
+    public PosicionadorDeEmbarcacoesPadrao(HashMap<PosicionamentosDeEmbarcacao, AlgoritmoPosicionamentoEmbarcacao> algoritmosPosicionamento) {
         this.algoritmosPosicionamento = algoritmosPosicionamento;
     }
     
+    @Override
     public void posiciona(Tabuleiro tabuleiro, Embarcacao[] embarcacoes) {
         for (Embarcacao e : embarcacoes) {
             posicionaEmbarcacao(tabuleiro, e);

@@ -1,4 +1,4 @@
-package br.edu.cefsa.batalhanaval.armas;
+package br.edu.cefsa.batalhanaval.armas.contratos;
 
 public enum TiposDeTiro {
     SIMPLES,

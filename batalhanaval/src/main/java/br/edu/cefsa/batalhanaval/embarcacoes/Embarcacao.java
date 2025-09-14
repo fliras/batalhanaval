@@ -1,15 +1,15 @@
 package br.edu.cefsa.batalhanaval.embarcacoes;
 
 import br.edu.cefsa.batalhanaval.utils.Constantes;
-import br.edu.cefsa.batalhanaval.armas.TiposDeTiro;
-import br.edu.cefsa.batalhanaval.armas.Arma;
+import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
+import br.edu.cefsa.batalhanaval.armas.ArmaPadrao;
 import java.util.HashMap;
 import java.util.List;
 
 public class Embarcacao {
     private TiposDeEmbarcacao tipoEmbarcacao;
     private boolean emOperacao;
-    private HashMap<TiposDeTiro, Arma> arsenal;
+    private HashMap<TiposDeTiro, ArmaPadrao> arsenal;
     private List<ParteDeEmbarcacao> partesDaEmbarcacao;
     
     public Embarcacao(TiposDeEmbarcacao tipoEmbarcacao) {
@@ -17,7 +17,7 @@ public class Embarcacao {
         this.emOperacao = true;
     }
     
-    protected void atribuiArsenal(HashMap<TiposDeTiro, Arma> arsenal) {
+    protected void atribuiArsenal(HashMap<TiposDeTiro, ArmaPadrao> arsenal) {
         this.arsenal = arsenal;
     }
     

@@ -1,18 +1,21 @@
 package br.edu.cefsa.batalhanaval.armas;
 
+import br.edu.cefsa.batalhanaval.armas.contratos.Arma;
+import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
 import br.edu.cefsa.batalhanaval.utils.Constantes;
 
-public class Arma {
+public class ArmaPadrao implements Arma {
     private String nome;
     private TiposDeTiro tipoDeTiro;
     private int quantidadeDeTiros;
     
-    public Arma(String nome, TiposDeTiro tipoDeTiro, int quantidadeDeTiros) {
+    public ArmaPadrao(String nome, TiposDeTiro tipoDeTiro, int quantidadeDeTiros) {
         this.nome = nome;
         this.tipoDeTiro = tipoDeTiro;
         this.quantidadeDeTiros = quantidadeDeTiros;
     }
     
+    @Override
     public boolean dispara() {
         if (quantidadeDeTiros == Constantes.QTDE_ILIMITADA) {
             return true;
@@ -25,10 +28,12 @@ public class Arma {
         return true;
     }
     
+    @Override
     public int contaTirosRestantes() {
         return this.quantidadeDeTiros;
     }
     
+    @Override
     public boolean possuiTiros() {
         return quantidadeDeTiros > 0 || quantidadeDeTiros == Constantes.QTDE_ILIMITADA;
     }

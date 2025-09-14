@@ -1,5 +1,6 @@
 package br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes;
 
+import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.AlgoritmoPosicionamentoEmbarcacao;
 import br.edu.cefsa.batalhanaval.tabuleiro.Coordenadas;
 import br.edu.cefsa.batalhanaval.embarcacoes.Embarcacao;
 import br.edu.cefsa.batalhanaval.embarcacoes.ParteDeEmbarcacao;

@@ -2,8 +2,8 @@ package br.edu.cefsa.batalhanaval.embarcacoes;
 
 import br.edu.cefsa.batalhanaval.utils.Constantes;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeDeJogo;
-import br.edu.cefsa.batalhanaval.armas.TiposDeTiro;
-import br.edu.cefsa.batalhanaval.armas.Arma;
+import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
+import br.edu.cefsa.batalhanaval.armas.ArmaPadrao;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -64,13 +64,13 @@ public final class HelpersEmbarcacao {
         return partes;
     }
     
-    private static HashMap<TiposDeTiro, Arma> criaArsenalPorTipoDeEmbarcacao(TiposDeEmbarcacao tipoEmbarcacao, DificuldadeDeJogo dificuldade) {
-        HashMap<TiposDeTiro, Arma> arsenal = new HashMap();
-        arsenal.put(TiposDeTiro.SIMPLES, new Arma("Arma Simples", TiposDeTiro.SIMPLES, Constantes.QTDE_ILIMITADA));
+    private static HashMap<TiposDeTiro, ArmaPadrao> criaArsenalPorTipoDeEmbarcacao(TiposDeEmbarcacao tipoEmbarcacao, DificuldadeDeJogo dificuldade) {
+        HashMap<TiposDeTiro, ArmaPadrao> arsenal = new HashMap();
+        arsenal.put(TiposDeTiro.SIMPLES, new ArmaPadrao("Arma Simples", TiposDeTiro.SIMPLES, Constantes.QTDE_ILIMITADA));
         if (tipoEmbarcacao != TiposDeEmbarcacao.DESTROIER && tipoEmbarcacao != TiposDeEmbarcacao.SUBMARINO) {
-            arsenal.put(TiposDeTiro.DUPLO, new Arma("Arma Dupla", TiposDeTiro.DUPLO, dificuldade.obtemLimiteTirosEspeciais()));
+            arsenal.put(TiposDeTiro.DUPLO, new ArmaPadrao("Arma Dupla", TiposDeTiro.DUPLO, dificuldade.obtemLimiteTirosEspeciais()));
             if (tipoEmbarcacao == TiposDeEmbarcacao.PORTA_AVIOES) {
-                arsenal.put(TiposDeTiro.EXPLOSIVO, new Arma("Arma Explosiva", TiposDeTiro.EXPLOSIVO, dificuldade.obtemLimiteTirosEspeciais()));
+                arsenal.put(TiposDeTiro.EXPLOSIVO, new ArmaPadrao("Arma Explosiva", TiposDeTiro.EXPLOSIVO, dificuldade.obtemLimiteTirosEspeciais()));
             }
         }
         return arsenal;

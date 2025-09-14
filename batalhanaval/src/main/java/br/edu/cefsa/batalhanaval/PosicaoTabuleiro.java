@@ -1,8 +1,13 @@
 package br.edu.cefsa.batalhanaval;
 
 public class PosicaoTabuleiro {
+    private Coordenadas coordenadas;
     private boolean atingida = false;
     private ParteDeEmbarcacao parteDeEmbarcacao;
+    
+    public PosicaoTabuleiro(Coordenadas coordenadas) {
+        this.coordenadas = coordenadas;
+    }
     
     public void atribuiParteDeEmbarcacao(ParteDeEmbarcacao parteDeEmbarcacao) {
         this.parteDeEmbarcacao = parteDeEmbarcacao;
@@ -23,5 +28,9 @@ public class PosicaoTabuleiro {
     
     public boolean verificaSeEstaVazia() {
         return parteDeEmbarcacao == null;
+    }
+    
+    public Coordenadas obtemCoordenadas() {
+        return coordenadas;
     }
 }

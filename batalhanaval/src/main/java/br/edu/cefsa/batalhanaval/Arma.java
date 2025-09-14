@@ -26,4 +26,8 @@ public class Arma {
     public int contaTirosRestantes() {
         return this.quantidadeDeTiros;
     }
+    
+    public boolean possuiTiros() {
+        return quantidadeDeTiros > 0 || quantidadeDeTiros == Constantes.QTDE_ILIMITADA;
+    }
 }

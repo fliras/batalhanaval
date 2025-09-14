@@ -40,7 +40,7 @@ public class Embarcacao {
     }
     
     public boolean verificaSeArmaPossuiMunicao(TiposDeTiro tipoDeTiro) {
-        if (arsenal.containsKey(tipoDeTiro)) return false;
+        if (!arsenal.containsKey(tipoDeTiro)) return false;
         int qtdeTirosRestantes = arsenal.get(tipoDeTiro).contaTirosRestantes();
         return qtdeTirosRestantes > 0 || qtdeTirosRestantes == Constantes.QTDE_ILIMITADA;
     }
@@ -57,10 +57,21 @@ public class Embarcacao {
     }
     
     public ParteDeEmbarcacao[] obtemPartes() {
-        return (ParteDeEmbarcacao[])partesDaEmbarcacao.toArray();
+        return partesDaEmbarcacao.toArray(ParteDeEmbarcacao[]::new);
     }
     
     public int obtemTamanho() {
         return partesDaEmbarcacao.size();
+    }
+    
+    public String obtemNome() {
+        return tipoEmbarcacao.obtemNome();
+    }
+    
+    public TiposDeTiro[] listaTiposDeTiroDisponiveis() {
+        return arsenal.keySet()
+            .stream()
+            .filter(t -> arsenal.get(t).possuiTiros())
+            .toArray(TiposDeTiro[]::new);
     }
 }

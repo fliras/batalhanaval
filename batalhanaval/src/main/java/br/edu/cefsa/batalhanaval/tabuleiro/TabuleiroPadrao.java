@@ -1,15 +1,18 @@
 package br.edu.cefsa.batalhanaval.tabuleiro;
 
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.PosicaoTabuleiro;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
 import java.util.HashMap;
 import java.util.List;
 
-public class Tabuleiro {
+public class TabuleiroPadrao implements Tabuleiro {
     private final DificuldadeDeJogo dificuldade;
     private final HashMap<String, PosicaoTabuleiro> posicoesAcessadas;
     private int quantidadeDeLinhasEColunas;
     
-    public Tabuleiro(DificuldadeDeJogo dificuldade) {
+    public TabuleiroPadrao(DificuldadeDeJogo dificuldade) {
         this.dificuldade = dificuldade;
         this.posicoesAcessadas = new HashMap();
         this.delimitaPosicoes();
@@ -32,6 +35,7 @@ public class Tabuleiro {
         }
     }
     
+    @Override
     public PosicaoTabuleiro obtemPosicao(Coordenadas posicao) {
         if (!verificaSeCoordenadasSaoValidas(posicao)) {
             return null; // futuramente, lançar uma exception
@@ -44,6 +48,7 @@ public class Tabuleiro {
         return posicoesAcessadas.get(posicaoEmString);
     }
     
+    @Override
     public boolean verificaSeListaDeCoordenadasSaoValidas(List<Coordenadas> posicoes) {
         for (Coordenadas posicao : posicoes)
             if (!verificaSeCoordenadasSaoValidas(posicao))
@@ -51,6 +56,7 @@ public class Tabuleiro {
         return true;
     }
     
+    @Override
     public boolean verificaSeCoordenadasSaoValidas(Coordenadas posicao) {
         boolean linhaValida = posicao.obtemLinha() > 0 && posicao.obtemLinha() <= quantidadeDeLinhasEColunas;
         boolean colunaValida = posicao.obtemColuna() > 0 && posicao.obtemColuna() <= quantidadeDeLinhasEColunas;
@@ -58,14 +64,16 @@ public class Tabuleiro {
     }
     
     private void alocaNovaPosicao(Coordenadas coordenadas) {
-        posicoesAcessadas.put(coordenadas.toString(), new PosicaoTabuleiro(coordenadas));
+        posicoesAcessadas.put(coordenadas.toString(), new PosicaoTabuleiroPadrao(coordenadas));
     }
     
+    @Override
     public int obtemQuantidadeDeLinhasEColunas() {
         return quantidadeDeLinhasEColunas;
     }
     
-    public PosicaoTabuleiro[] obtemPosicoesAcessadas() {
-        return posicoesAcessadas.values().toArray(PosicaoTabuleiro[]::new);
+    @Override
+    public PosicaoTabuleiroPadrao[] obtemPosicoesAcessadas() {
+        return posicoesAcessadas.values().toArray(PosicaoTabuleiroPadrao[]::new);
     }
 }

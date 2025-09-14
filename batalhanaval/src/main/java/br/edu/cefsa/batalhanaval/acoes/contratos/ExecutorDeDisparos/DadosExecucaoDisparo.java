@@ -2,16 +2,16 @@ package br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos;
 
 import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
 import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
-import br.edu.cefsa.batalhanaval.tabuleiro.Tabuleiro;
-import br.edu.cefsa.batalhanaval.tabuleiro.Coordenadas;
+import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
 
 public class DadosExecucaoDisparo {
     private final EmbarcacaoPadrao embarcacao;
     private final TiposDeTiro tipoTiro;
     private final Coordenadas posicaoAlvo;
-    private final Tabuleiro tabuleiroAlvo;
+    private final TabuleiroPadrao tabuleiroAlvo;
     
-    public DadosExecucaoDisparo(EmbarcacaoPadrao embarcacao, TiposDeTiro tipoTiro, Coordenadas posicaoAlvo, Tabuleiro tabuleiroAlvo) {
+    public DadosExecucaoDisparo(EmbarcacaoPadrao embarcacao, TiposDeTiro tipoTiro, Coordenadas posicaoAlvo, TabuleiroPadrao tabuleiroAlvo) {
         this.embarcacao = embarcacao;
         this.tipoTiro = tipoTiro;
         this.posicaoAlvo = posicaoAlvo;
@@ -30,7 +30,7 @@ public class DadosExecucaoDisparo {
         return posicaoAlvo;
     }
     
-    public Tabuleiro obtemTabuleiroAlvo() {
+    public TabuleiroPadrao obtemTabuleiroAlvo() {
         return tabuleiroAlvo;
     }
 }

@@ -2,7 +2,7 @@ package br.edu.cefsa.batalhanaval.armas;
 
 import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
 import br.edu.cefsa.batalhanaval.utils.Utils;
-import br.edu.cefsa.batalhanaval.tabuleiro.Coordenadas;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
 import java.util.ArrayList;
 import java.util.List;
 

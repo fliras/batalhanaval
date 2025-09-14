@@ -1,19 +1,19 @@
 package br.edu.cefsa.batalhanaval.main;
 
 import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
-import br.edu.cefsa.batalhanaval.tabuleiro.Tabuleiro;
+import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
 import java.util.List;
 
 public class Jogador {
     private List<EmbarcacaoPadrao> embarcacoes;
-    private Tabuleiro tabuleiro;
+    private TabuleiroPadrao tabuleiro;
     
-    public Jogador(List<EmbarcacaoPadrao> embarcacoes, Tabuleiro tabuleiro) {
+    public Jogador(List<EmbarcacaoPadrao> embarcacoes, TabuleiroPadrao tabuleiro) {
         this.embarcacoes = embarcacoes;
         this.tabuleiro = tabuleiro;
     }
     
-    protected void atribuiTabuleiro(Tabuleiro tabuleiro) {
+    protected void atribuiTabuleiro(TabuleiroPadrao tabuleiro) {
         this.tabuleiro = tabuleiro;
     }
     
@@ -21,7 +21,7 @@ public class Jogador {
         this.embarcacoes = embarcacoes;
     }
     
-    public Tabuleiro obtemTabuleiro() {
+    public TabuleiroPadrao obtemTabuleiro() {
         return tabuleiro;
     }
     

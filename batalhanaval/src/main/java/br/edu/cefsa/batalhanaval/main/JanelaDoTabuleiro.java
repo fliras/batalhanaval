@@ -1,8 +1,8 @@
 package br.edu.cefsa.batalhanaval.main;
 
-import br.edu.cefsa.batalhanaval.tabuleiro.Tabuleiro;
-import br.edu.cefsa.batalhanaval.tabuleiro.Coordenadas;
-import br.edu.cefsa.batalhanaval.tabuleiro.PosicaoTabuleiro;
+import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
+import br.edu.cefsa.batalhanaval.tabuleiro.PosicaoTabuleiroPadrao;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,11 +20,11 @@ import javax.swing.Box;
 public class JanelaDoTabuleiro extends JFrame {
     private JPanel gridPanel;
     private JPanel[][] celulas;
-    private Tabuleiro tabuleiro;
+    private TabuleiroPadrao tabuleiro;
     private int qtdeLinhas;
     private int qtdeColunas;
 
-    public JanelaDoTabuleiro(Tabuleiro tabuleiro) {
+    public JanelaDoTabuleiro(TabuleiroPadrao tabuleiro) {
         this.tabuleiro = tabuleiro;
         qtdeLinhas = qtdeColunas = tabuleiro.obtemQuantidadeDeLinhasEColunas();
         this.celulas = new JPanel[qtdeLinhas][qtdeColunas];
@@ -118,8 +118,8 @@ public class JanelaDoTabuleiro extends JFrame {
     
     public void atualizaTela() {
         limpaTela();
-        PosicaoTabuleiro[] posicoesAcessadas = tabuleiro.obtemPosicoesAcessadas();
-        for (PosicaoTabuleiro posicao : posicoesAcessadas) {
+        PosicaoTabuleiroPadrao[] posicoesAcessadas = tabuleiro.obtemPosicoesAcessadas();
+        for (PosicaoTabuleiroPadrao posicao : posicoesAcessadas) {
             Coordenadas coordenadasPosicao = posicao.obtemCoordenadas();
             Color cor = Color.CYAN;
             if (!posicao.verificaSeEstaVazia() && posicao.verificaSeFoiAtingida())

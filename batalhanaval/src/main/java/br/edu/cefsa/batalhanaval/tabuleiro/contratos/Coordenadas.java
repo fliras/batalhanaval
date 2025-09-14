@@ -1,4 +1,4 @@
-package br.edu.cefsa.batalhanaval.tabuleiro;
+package br.edu.cefsa.batalhanaval.tabuleiro.contratos;
 
 public class Coordenadas {
     private final int linha;

@@ -8,8 +8,8 @@ import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
 import br.edu.cefsa.batalhanaval.embarcacoes.HelpersEmbarcacao;
 import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
 import br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos.DadosExecucaoDisparo;
-import br.edu.cefsa.batalhanaval.tabuleiro.Tabuleiro;
-import br.edu.cefsa.batalhanaval.tabuleiro.Coordenadas;
+import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
 import br.edu.cefsa.batalhanaval.acoes.ChecadorDeVencedorPadrao;
 import br.edu.cefsa.batalhanaval.acoes.GeradorDeJogadasPadrao;
 import br.edu.cefsa.batalhanaval.acoes.ExecutorDeDisparosPadrao;
@@ -51,8 +51,8 @@ public class Main {
                 + "1 - Fácil\n" + "2 - Médio\n" + "3 - Difícil"));
 
         DificuldadeDeJogo dificuldade = dificuldades[escolhaDificuldade - 1];
-        Tabuleiro tabuleiroJogador1 = new Tabuleiro(dificuldade);
-        Tabuleiro tabuleiroJogador2 = new Tabuleiro(dificuldade);
+        TabuleiroPadrao tabuleiroJogador1 = new TabuleiroPadrao(dificuldade);
+        TabuleiroPadrao tabuleiroJogador2 = new TabuleiroPadrao(dificuldade);
 
         MontadorDeEmbarcacoesPadrao montagemEmbarcacoes = new MontadorDeEmbarcacoesPadrao(dificuldade);
         List<EmbarcacaoPadrao> embarcacoesJogador1 = montagemEmbarcacoes.monta();

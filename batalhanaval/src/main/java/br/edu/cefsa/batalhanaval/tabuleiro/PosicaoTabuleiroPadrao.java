@@ -1,20 +1,24 @@
 package br.edu.cefsa.batalhanaval.tabuleiro;
 
-import br.edu.cefsa.batalhanaval.embarcacoes.ParteDeEmbarcacaoPadrao;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
+import br.edu.cefsa.batalhanaval.embarcacoes.contratos.ParteDeEmbarcacao;
+import br.edu.cefsa.batalhanaval.tabuleiro.contratos.PosicaoTabuleiro;
 
-public class PosicaoTabuleiro {
+public class PosicaoTabuleiroPadrao implements PosicaoTabuleiro {
     private Coordenadas coordenadas;
     private boolean atingida = false;
-    private ParteDeEmbarcacaoPadrao parteDeEmbarcacao;
+    private ParteDeEmbarcacao parteDeEmbarcacao;
     
-    public PosicaoTabuleiro(Coordenadas coordenadas) {
+    public PosicaoTabuleiroPadrao(Coordenadas coordenadas) {
         this.coordenadas = coordenadas;
     }
     
-    public void atribuiParteDeEmbarcacao(ParteDeEmbarcacaoPadrao parteDeEmbarcacao) {
+    @Override
+    public void atribuiParteDeEmbarcacao(ParteDeEmbarcacao parteDeEmbarcacao) {
         this.parteDeEmbarcacao = parteDeEmbarcacao;
     }
     
+    @Override
     public void registraDisparo() {
         if (!atingida) {
             this.atingida = true;
@@ -24,14 +28,17 @@ public class PosicaoTabuleiro {
         }
     }
     
+    @Override
     public boolean verificaSeFoiAtingida() {
         return this.atingida;
     }
     
+    @Override
     public boolean verificaSeEstaVazia() {
         return parteDeEmbarcacao == null;
     }
     
+    @Override
     public Coordenadas obtemCoordenadas() {
         return coordenadas;
     }

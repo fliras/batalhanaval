@@ -8,6 +8,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>24</maven.compiler.release>
-        <exec.mainClass>br.edu.cefsa.batalhanaval.Batalhanaval</exec.mainClass>
+        <exec.mainClass>br.edu.cefsa.batalhanaval.Main</exec.mainClass>
     </properties>
 </project>

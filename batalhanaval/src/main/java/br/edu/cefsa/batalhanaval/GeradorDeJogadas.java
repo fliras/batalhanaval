@@ -13,16 +13,10 @@ public class GeradorDeJogadas {
     }
     
     private Embarcacao sorteiaEmbarcacao(Embarcacao[] embarcacoes) {
-        List<Embarcacao> embarcacoesOperantes = filtraEmbarcacoesOperantes(embarcacoes);
+        List<Embarcacao> embarcacoesOperantes = HelpersEmbarcacao.filtraEmbarcacoesOperantes(embarcacoes);
         int qtdeEmbarcacoes = embarcacoesOperantes.size();
         int indexSorteado = Utils.geraNumeroRandomicoDeXaY(0, qtdeEmbarcacoes - 1);
         return embarcacoesOperantes.get(indexSorteado);
-    }
-    
-    private List<Embarcacao> filtraEmbarcacoesOperantes(Embarcacao[] embarcacoes) {
-        return Arrays.stream(embarcacoes)
-            .filter(e -> e.verificaSeEstaOperante())
-            .toList();
     }
     
     private TiposDeTiro sorteiaTipoDeTiro(Embarcacao embarcacao) {

@@ -1,6 +1,7 @@
 package br.edu.cefsa.batalhanaval;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -69,5 +70,11 @@ public final class HelpersEmbarcacao {
             }
         }
         return arsenal;
+    }
+    
+    public static List<Embarcacao> filtraEmbarcacoesOperantes(Embarcacao[] embarcacoes) {
+        return Arrays.stream(embarcacoes)
+            .filter(e -> e.verificaSeEstaOperante())
+            .toList();
     }
 }

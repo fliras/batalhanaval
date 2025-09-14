@@ -4,7 +4,7 @@ public class PosicionamentoEmbarcacaoHorizontalParaEsquerda implements Algoritmo
     @Override
     public boolean validaSeAplicavel(int qtdePartesEmbarcacao, Tabuleiro tabuleiro, Coordenadas posicaoRaiz) {
         int colunaInicial = posicaoRaiz.obtemColuna();
-        for (int coluna = colunaInicial; coluna >= (colunaInicial - qtdePartesEmbarcacao); coluna--) {
+        for (int coluna = colunaInicial; coluna > (colunaInicial - qtdePartesEmbarcacao); coluna--) {
             Coordenadas posicaoEmAnalise = new Coordenadas(posicaoRaiz.obtemLinha(), coluna);
             if (!tabuleiro.verificaSeCoordenadasSaoValidas(posicaoEmAnalise))
                 return false;
@@ -19,7 +19,7 @@ public class PosicionamentoEmbarcacaoHorizontalParaEsquerda implements Algoritmo
         ParteDeEmbarcacao[] partesEmbarcacao = embarcacao.obtemPartes();
         int tamanhoEmbarcacao = embarcacao.obtemTamanho();
         int colunaInicial = posicaoRaiz.obtemColuna();
-        for (int coluna = colunaInicial, iParte = 0; coluna >= (colunaInicial - tamanhoEmbarcacao); coluna--) {
+        for (int coluna = colunaInicial, iParte = 0; coluna > (colunaInicial - tamanhoEmbarcacao); coluna--) {
             Coordenadas coordenadasAtuais = new Coordenadas(posicaoRaiz.obtemLinha(), coluna);
             tabuleiro.obtemPosicao(coordenadasAtuais).atribuiParteDeEmbarcacao(partesEmbarcacao[iParte++]);
         }

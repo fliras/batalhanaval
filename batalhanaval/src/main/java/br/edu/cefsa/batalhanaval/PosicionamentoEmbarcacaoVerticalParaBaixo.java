@@ -4,7 +4,7 @@ public class PosicionamentoEmbarcacaoVerticalParaBaixo implements AlgoritmoPosic
     @Override
     public boolean validaSeAplicavel(int qtdePartesEmbarcacao, Tabuleiro tabuleiro, Coordenadas posicaoRaiz) {
         int linhaInicial = posicaoRaiz.obtemLinha();
-        for (int linha = linhaInicial; linha <= (linhaInicial + qtdePartesEmbarcacao); linha++) {
+        for (int linha = linhaInicial; linha < (linhaInicial + qtdePartesEmbarcacao); linha++) {
             Coordenadas posicaoEmAnalise = new Coordenadas(linha, posicaoRaiz.obtemColuna());
             if (!tabuleiro.verificaSeCoordenadasSaoValidas(posicaoEmAnalise))
                 return false;
@@ -19,7 +19,7 @@ public class PosicionamentoEmbarcacaoVerticalParaBaixo implements AlgoritmoPosic
         ParteDeEmbarcacao[] partesEmbarcacao = embarcacao.obtemPartes();
         int tamanhoEmbarcacao = embarcacao.obtemTamanho();
         int linhaInicial = posicaoRaiz.obtemLinha();
-        for (int linha = linhaInicial, iParte = 0; linha <= (linhaInicial + tamanhoEmbarcacao); linha++) {
+        for (int linha = linhaInicial, iParte = 0; linha < (linhaInicial + tamanhoEmbarcacao); linha++) {
             Coordenadas coordenadasAtuais = new Coordenadas(linha, posicaoRaiz.obtemColuna());
             tabuleiro.obtemPosicao(coordenadasAtuais).atribuiParteDeEmbarcacao(partesEmbarcacao[iParte++]);
         }

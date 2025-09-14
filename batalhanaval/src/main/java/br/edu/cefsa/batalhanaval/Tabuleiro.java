@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Tabuleiro {
     private final DificuldadeDeJogo dificuldade;
-    private final HashMap<String, PosicaoTabuleiro> posicoes;
+    private final HashMap<String, PosicaoTabuleiro> posicoesAcessadas;
     private int quantidadeDeLinhasEColunas;
     
     public Tabuleiro(DificuldadeDeJogo dificuldade) {
         this.dificuldade = dificuldade;
-        this.posicoes = new HashMap();
+        this.posicoesAcessadas = new HashMap();
         this.delimitaPosicoes();
     }
     
@@ -36,11 +36,11 @@ public class Tabuleiro {
             return null; // futuramente, lançar uma exception
         }
         String posicaoEmString = posicao.toString();
-        if (posicoes.containsKey(posicaoEmString)) {
-            return posicoes.get(posicaoEmString);
+        if (posicoesAcessadas.containsKey(posicaoEmString)) {
+            return posicoesAcessadas.get(posicaoEmString);
         }
         alocaNovaPosicao(posicao);
-        return posicoes.get(posicaoEmString);
+        return posicoesAcessadas.get(posicaoEmString);
     }
     
     public boolean verificaSeListaDeCoordenadasSaoValidas(List<Coordenadas> posicoes) {
@@ -56,11 +56,15 @@ public class Tabuleiro {
         return linhaValida && colunaValida;
     }
     
-    private void alocaNovaPosicao(Coordenadas posicao) {
-        posicoes.put(posicao.toString(), new PosicaoTabuleiro());
+    private void alocaNovaPosicao(Coordenadas coordenadas) {
+        posicoesAcessadas.put(coordenadas.toString(), new PosicaoTabuleiro(coordenadas));
     }
     
     public int obtemQuantidadeDeLinhasEColunas() {
         return quantidadeDeLinhasEColunas;
+    }
+    
+    public PosicaoTabuleiro[] obtemPosicoesAcessadas() {
+        return posicoesAcessadas.values().toArray(PosicaoTabuleiro[]::new);
     }
 }

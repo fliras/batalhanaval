@@ -4,7 +4,7 @@ import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeFacil;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeMedia;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeDificil;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
-import br.edu.cefsa.batalhanaval.embarcacoes.Embarcacao;
+import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
 import br.edu.cefsa.batalhanaval.embarcacoes.HelpersEmbarcacao;
 import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
 import br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos.DadosExecucaoDisparo;
@@ -55,8 +55,8 @@ public class Main {
         Tabuleiro tabuleiroJogador2 = new Tabuleiro(dificuldade);
 
         MontadorDeEmbarcacoesPadrao montagemEmbarcacoes = new MontadorDeEmbarcacoesPadrao(dificuldade);
-        List<Embarcacao> embarcacoesJogador1 = montagemEmbarcacoes.monta();
-        List<Embarcacao> embarcacoesJogador2 = montagemEmbarcacoes.monta();
+        List<EmbarcacaoPadrao> embarcacoesJogador1 = montagemEmbarcacoes.monta();
+        List<EmbarcacaoPadrao> embarcacoesJogador2 = montagemEmbarcacoes.monta();
 
         jogadorAtacante = new Jogador(embarcacoesJogador1, tabuleiroJogador1);
         jogadorAlvo = new Jogador(embarcacoesJogador2, tabuleiroJogador2);
@@ -79,14 +79,14 @@ public class Main {
         janelaTabuleiroAlvo.atualizaTela();
         
         while (true) {
-            List<Embarcacao> embarcacoesDisponiveis = HelpersEmbarcacao.filtraEmbarcacoesOperantes(jogadorAtacante.obtemEmbarcacoes());
+            List<EmbarcacaoPadrao> embarcacoesDisponiveis = HelpersEmbarcacao.filtraEmbarcacoesOperantes(jogadorAtacante.obtemEmbarcacoes());
             String opcoesDoPrompt = "";
             for (int i = 0; i < embarcacoesDisponiveis.size(); i++) {
                 opcoesDoPrompt += String.format("%d - %s\n", (i + 1), embarcacoesDisponiveis.get(i).obtemNome());
             }
             int idEmbarcacao = Integer.parseInt(montaJanelaDeInput("Batalha Naval", "Escolha uma embarcação para atirar:\n"
                     + opcoesDoPrompt)) - 1;
-            Embarcacao embarcacaoEscolhida = embarcacoesDisponiveis.get(idEmbarcacao);
+            EmbarcacaoPadrao embarcacaoEscolhida = embarcacoesDisponiveis.get(idEmbarcacao);
             
             TiposDeTiro[] tirosDisponiveis = embarcacaoEscolhida.listaTiposDeTiroDisponiveis();
             opcoesDoPrompt = "";

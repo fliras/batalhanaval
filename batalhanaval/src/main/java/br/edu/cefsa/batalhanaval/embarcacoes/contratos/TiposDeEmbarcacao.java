@@ -1,4 +1,4 @@
-package br.edu.cefsa.batalhanaval.embarcacoes;
+package br.edu.cefsa.batalhanaval.embarcacoes.contratos;
 
 public enum TiposDeEmbarcacao {
     PORTA_AVIOES("Porta Aviões", 6),

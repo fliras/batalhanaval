@@ -1,17 +1,17 @@
 package br.edu.cefsa.batalhanaval.tabuleiro;
 
-import br.edu.cefsa.batalhanaval.embarcacoes.ParteDeEmbarcacao;
+import br.edu.cefsa.batalhanaval.embarcacoes.ParteDeEmbarcacaoPadrao;
 
 public class PosicaoTabuleiro {
     private Coordenadas coordenadas;
     private boolean atingida = false;
-    private ParteDeEmbarcacao parteDeEmbarcacao;
+    private ParteDeEmbarcacaoPadrao parteDeEmbarcacao;
     
     public PosicaoTabuleiro(Coordenadas coordenadas) {
         this.coordenadas = coordenadas;
     }
     
-    public void atribuiParteDeEmbarcacao(ParteDeEmbarcacao parteDeEmbarcacao) {
+    public void atribuiParteDeEmbarcacao(ParteDeEmbarcacaoPadrao parteDeEmbarcacao) {
         this.parteDeEmbarcacao = parteDeEmbarcacao;
     }
     

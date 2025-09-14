@@ -3,7 +3,7 @@ package br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes;
 import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.AlgoritmoPosicionamentoEmbarcacao;
 import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.PosicionadorDeEmbarcacoes;
 import br.edu.cefsa.batalhanaval.tabuleiro.Coordenadas;
-import br.edu.cefsa.batalhanaval.embarcacoes.Embarcacao;
+import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
 import br.edu.cefsa.batalhanaval.tabuleiro.HelpersTabuleiro;
 import br.edu.cefsa.batalhanaval.tabuleiro.Tabuleiro;
 import br.edu.cefsa.batalhanaval.utils.Utils;
@@ -19,13 +19,13 @@ public class PosicionadorDeEmbarcacoesPadrao implements PosicionadorDeEmbarcacoe
     }
     
     @Override
-    public void posiciona(Tabuleiro tabuleiro, Embarcacao[] embarcacoes) {
-        for (Embarcacao e : embarcacoes) {
+    public void posiciona(Tabuleiro tabuleiro, EmbarcacaoPadrao[] embarcacoes) {
+        for (EmbarcacaoPadrao e : embarcacoes) {
             posicionaEmbarcacao(tabuleiro, e);
         }
     }
     
-    private void posicionaEmbarcacao(Tabuleiro tabuleiro, Embarcacao embarcacao) {
+    private void posicionaEmbarcacao(Tabuleiro tabuleiro, EmbarcacaoPadrao embarcacao) {
         Coordenadas posicaoRaizAleatoria = HelpersTabuleiro.sorteiaCoordenadas(tabuleiro);
         PosicionamentosDeEmbarcacao[] posicionamentos = mapeiaPosicionamentosPossiveis(embarcacao.obtemTamanho(), tabuleiro, posicaoRaizAleatoria);
         if (posicionamentos.length > 0) {

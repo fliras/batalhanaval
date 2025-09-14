@@ -1,14 +1,14 @@
 package br.edu.cefsa.batalhanaval.main;
 
-import br.edu.cefsa.batalhanaval.embarcacoes.Embarcacao;
+import br.edu.cefsa.batalhanaval.embarcacoes.EmbarcacaoPadrao;
 import br.edu.cefsa.batalhanaval.tabuleiro.Tabuleiro;
 import java.util.List;
 
 public class Jogador {
-    private List<Embarcacao> embarcacoes;
+    private List<EmbarcacaoPadrao> embarcacoes;
     private Tabuleiro tabuleiro;
     
-    public Jogador(List<Embarcacao> embarcacoes, Tabuleiro tabuleiro) {
+    public Jogador(List<EmbarcacaoPadrao> embarcacoes, Tabuleiro tabuleiro) {
         this.embarcacoes = embarcacoes;
         this.tabuleiro = tabuleiro;
     }
@@ -17,7 +17,7 @@ public class Jogador {
         this.tabuleiro = tabuleiro;
     }
     
-    protected void atribuiEmbarcacoes(List<Embarcacao> embarcacoes) {
+    protected void atribuiEmbarcacoes(List<EmbarcacaoPadrao> embarcacoes) {
         this.embarcacoes = embarcacoes;
     }
     
@@ -25,7 +25,7 @@ public class Jogador {
         return tabuleiro;
     }
     
-    public Embarcacao[] obtemEmbarcacoes() {
-        return embarcacoes.toArray(Embarcacao[]::new); // retorna um array para não adicionar embarcações à List<> original.
+    public EmbarcacaoPadrao[] obtemEmbarcacoes() {
+        return embarcacoes.toArray(EmbarcacaoPadrao[]::new); // retorna um array para não adicionar embarcações à List<> original.
     }
 }

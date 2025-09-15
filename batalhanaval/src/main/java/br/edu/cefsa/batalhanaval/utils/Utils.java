@@ -7,8 +7,14 @@ public final class Utils {
         return (int)(Math.random() * (y - x + 1)) + x;
     }
     
-    public static int obtemInputNumerico(String prompt) {
-        return Integer.parseInt(obtemInput(prompt));
+    public static int obtemOpcaoNumerica(String prompt) {
+        try {
+            int opcao = Integer.parseInt(obtemInput(prompt));
+            if (opcao <= 0) return -1;
+            return opcao;
+        } catch (NumberFormatException nfe) {
+            return -1;
+        }
     }
     
     public static String obtemInput(String prompt) {

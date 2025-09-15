@@ -24,7 +24,6 @@ import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
 import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
 import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
 import br.edu.cefsa.batalhanaval.utils.Utils;
-import java.util.HashMap;
 import java.util.List;
 
 public class MaquinaDeJogo {    
@@ -34,19 +33,19 @@ public class MaquinaDeJogo {
         DificuldadeDificil.obtem()
     };
     
-    private ExecutorDeDisparos executorDisparos;
-    private ChecadorDeVencedor checadorVencedor;
-    private GeradorDeJogadas geradorJogadas;
-    private MontadorDeEmbarcacoes montadorEmbarcacoes;
-    private PosicionadorDeEmbarcacoes posicionadorEmbarcacoes;
-    
-    private Jogador jogadorAtacante;
-    private Jogador jogadorAlvo;
-    private DadosExecucaoDisparo dadosProximaJogada;
+    private final ExecutorDeDisparos executorDisparos;
+    private final ChecadorDeVencedor checadorVencedor;
+    private final GeradorDeJogadas geradorJogadas;
+    private final MontadorDeEmbarcacoes montadorEmbarcacoes;
+    private final PosicionadorDeEmbarcacoes posicionadorEmbarcacoes;
     
     private JanelaDoTabuleiro janelaTabuleiroAlvo;
     private JanelaDoTabuleiro janelaTabuleiroAtacante;
     
+    private DificuldadeDeJogo dificuldade;
+    private Jogador jogadorAtacante;
+    private Jogador jogadorAlvo;
+    private DadosExecucaoDisparo dadosProximaJogada;
     private EstadosMaquinaDeJogo estadoAtual;
     
     public MaquinaDeJogo(
@@ -63,14 +62,16 @@ public class MaquinaDeJogo {
     }
     
     public void inicia() {
-        estadoAtual = EstadosMaquinaDeJogo.INICIO;
+        estadoAtual = EstadosMaquinaDeJogo.OBTENCAO_DO_NOME_DO_JOGADOR;
         loop();
     }
     
     private void loop() {
         while (true) {
             switch(estadoAtual) {
-                case INICIO -> inicializaJogo();
+                case OBTENCAO_DO_NOME_DO_JOGADOR -> obtemNomeDoJogador();
+                case ESCOLHA_DE_DIFICULDADE -> solicitaDificuldade();
+                case INICIALIZACAO_DE_COMPONENTES -> inicializaComponentes();
                 case ESCOLHA_DE_EMBARCACAO -> solicitaEmbarcacao();
                 case ESCOLHA_DE_TIRO -> solicitaTipoDeTiro();
                 case ESCOLHA_DE_ALVO -> solicitaCoordenadasDoAlvo();
@@ -81,30 +82,45 @@ public class MaquinaDeJogo {
         }
     }
     
-    private void inicializaJogo() {        
+    private void obtemNomeDoJogador() {
         String nomeJogador = Utils.obtemInput("Digite o seu nome: ");
-        int escolhaDificuldade = Utils.obtemInputNumerico("escolha uma dificuldade:\n"
-                + "1 - Fácil\n" + "2 - Médio\n" + "3 - Difícil");
-        
-        DificuldadeDeJogo dificuldade = dificuldades[escolhaDificuldade - 1];
+        if (!nomeJogador.equals("")) {
+            jogadorAtacante = new Jogador();
+            jogadorAtacante.atribuiNome(nomeJogador);
+            estadoAtual = EstadosMaquinaDeJogo.ESCOLHA_DE_DIFICULDADE;
+        } else {
+            Utils.exibeMensagem("Informe o seu nome!");
+        }
+    }
+    
+    private void solicitaDificuldade() {
+        int escolhaDificuldade = Utils.obtemOpcaoNumerica("escolha uma dificuldade:\n"
+            + "1 - Fácil\n" + "2 - Médio\n" + "3 - Difícil");
+        if (escolhaDificuldade != -1) {
+            dificuldade = dificuldades[escolhaDificuldade - 1];
+            estadoAtual = EstadosMaquinaDeJogo.INICIALIZACAO_DE_COMPONENTES;
+        } else {
+            Utils.exibeMensagem("Opção inválida! Escolha novamente");
+        }
+    }
+    
+    private void inicializaComponentes() {        
         Tabuleiro tabuleiroJogador1 = new TabuleiroPadrao(dificuldade);
         Tabuleiro tabuleiroJogador2 = new TabuleiroPadrao(dificuldade);
         
         List<Embarcacao> embarcacoesJogador1 = montadorEmbarcacoes.monta(dificuldade);
         List<Embarcacao> embarcacoesJogador2 = montadorEmbarcacoes.monta(dificuldade);
 
-        jogadorAtacante = new Jogador(nomeJogador, embarcacoesJogador1, tabuleiroJogador1);
-        jogadorAlvo = new Jogador("BOT", embarcacoesJogador2, tabuleiroJogador2);
+        jogadorAtacante.atribuiEmbarcacoes(embarcacoesJogador1);
+        jogadorAtacante.atribuiTabuleiro(tabuleiroJogador1);
         
-        HashMap<PosicionamentosDeEmbarcacao, AlgoritmoPosicionamentoEmbarcacao> algoritmosPosicionamento = new HashMap<>() {{
-            put(PosicionamentosDeEmbarcacao.HORIZONTAL_PARA_ESQUERDA, new PosicionamentoEmbarcacaoHorizontalParaEsquerda());
-            put(PosicionamentosDeEmbarcacao.HORIZONTAL_PARA_DIREITA, new PosicionamentoEmbarcacaoHorizontalParaDireita());
-            put(PosicionamentosDeEmbarcacao.VERTICAL_PARA_BAIXO, new PosicionamentoEmbarcacaoVerticalParaBaixo());
-            put(PosicionamentosDeEmbarcacao.VERTICAL_PARA_CIMA, new PosicionamentoEmbarcacaoVerticalParaCima());
-        }};
-        PosicionadorDeEmbarcacoesPadrao posicionador = new PosicionadorDeEmbarcacoesPadrao(algoritmosPosicionamento);
-        posicionador.posiciona(jogadorAtacante.obtemTabuleiro(), jogadorAtacante.obtemEmbarcacoes());
-        posicionador.posiciona(jogadorAlvo.obtemTabuleiro(), jogadorAlvo.obtemEmbarcacoes());
+        jogadorAlvo = new Jogador();
+        jogadorAlvo.atribuiNome("BOT");
+        jogadorAlvo.atribuiEmbarcacoes(embarcacoesJogador2);
+        jogadorAlvo.atribuiTabuleiro(tabuleiroJogador2);
+        
+        posicionadorEmbarcacoes.posiciona(jogadorAtacante.obtemTabuleiro(), jogadorAtacante.obtemEmbarcacoes());
+        posicionadorEmbarcacoes.posiciona(jogadorAlvo.obtemTabuleiro(), jogadorAlvo.obtemEmbarcacoes());
 
         janelaTabuleiroAtacante = new JanelaDoTabuleiro(jogadorAtacante.obtemTabuleiro());
         janelaTabuleiroAtacante.atualizaTela();
@@ -124,10 +140,14 @@ public class MaquinaDeJogo {
         for (int i = 0; i < embarcacoesDisponiveis.size(); i++) {
             opcoesDoPrompt += String.format("%d - %s\n", (i + 1), embarcacoesDisponiveis.get(i).obtemNome());
         }
-        int idEmbarcacao = Utils.obtemInputNumerico("Escolha uma embarcação para atirar:\n" + opcoesDoPrompt) - 1;
-        Embarcacao embarcacaoEscolhida = embarcacoesDisponiveis.get(idEmbarcacao);
-        dadosProximaJogada.atribuiEmbarcacao(embarcacaoEscolhida);
-        estadoAtual = EstadosMaquinaDeJogo.ESCOLHA_DE_TIRO;
+        int idEmbarcacao = Utils.obtemOpcaoNumerica("Escolha uma embarcação para atirar:\n" + opcoesDoPrompt);
+        if (idEmbarcacao == -1 || idEmbarcacao - 1 >= embarcacoesDisponiveis.size()) {
+            Utils.exibeMensagem("Embarcação inválida! Escolha novamente.");
+        } else {
+            Embarcacao embarcacaoEscolhida = embarcacoesDisponiveis.get(idEmbarcacao - 1);
+            dadosProximaJogada.atribuiEmbarcacao(embarcacaoEscolhida);
+            estadoAtual = EstadosMaquinaDeJogo.ESCOLHA_DE_TIRO;
+        }
     }
     
     private void solicitaTipoDeTiro() {
@@ -136,10 +156,14 @@ public class MaquinaDeJogo {
         for (int i = 0; i < tirosDisponiveis.length; i++) {
             opcoesDoPrompt += String.format("%d - %s\n", (i + 1), tirosDisponiveis[i].toString());
         }
-        int idTiro = Utils.obtemInputNumerico("Escolha um tipo de tiro:\n" + opcoesDoPrompt) - 1;
-        TiposDeTiro tiroEscolhido = tirosDisponiveis[idTiro];
-        dadosProximaJogada.atribuiTipoTiro(tiroEscolhido);
-        estadoAtual = EstadosMaquinaDeJogo.ESCOLHA_DE_ALVO;
+        int idTiro = Utils.obtemOpcaoNumerica("Escolha um tipo de tiro:\n" + opcoesDoPrompt);
+        if (idTiro == -1 || idTiro - 1 >= tirosDisponiveis.length) {
+            Utils.exibeMensagem("Tiro inválido! Escolha novamente.");
+        } else {
+            TiposDeTiro tiroEscolhido = tirosDisponiveis[idTiro - 1];
+            dadosProximaJogada.atribuiTipoTiro(tiroEscolhido);
+            estadoAtual = EstadosMaquinaDeJogo.ESCOLHA_DE_ALVO;
+        }
     }
     
     private void solicitaCoordenadasDoAlvo() {
@@ -202,6 +226,6 @@ public class MaquinaDeJogo {
     private void reinicia() {
         janelaTabuleiroAlvo.dispose();
         janelaTabuleiroAtacante.dispose();
-        estadoAtual = EstadosMaquinaDeJogo.INICIO;
+        estadoAtual = EstadosMaquinaDeJogo.OBTENCAO_DO_NOME_DO_JOGADOR;
     }
 }

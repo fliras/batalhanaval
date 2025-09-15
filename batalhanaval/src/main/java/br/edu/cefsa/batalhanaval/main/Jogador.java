@@ -9,12 +9,6 @@ public class Jogador {
     private List<Embarcacao> embarcacoes;
     private Tabuleiro tabuleiro;
     
-    public Jogador(String nome, List<Embarcacao> embarcacoes, Tabuleiro tabuleiro) {
-        this.nome = nome;
-        this.embarcacoes = embarcacoes;
-        this.tabuleiro = tabuleiro;
-    }
-    
     protected void atribuiTabuleiro(Tabuleiro tabuleiro) {
         this.tabuleiro = tabuleiro;
     }
@@ -29,6 +23,10 @@ public class Jogador {
     
     public Embarcacao[] obtemEmbarcacoes() {
         return embarcacoes.toArray(Embarcacao[]::new); // retorna um array para não adicionar embarcações à List<> original.
+    }
+    
+    public void atribuiNome(String nome) {
+        this.nome = nome;
     }
     
     public String obtemNome() {

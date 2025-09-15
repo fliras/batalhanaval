@@ -5,10 +5,12 @@ import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
 import java.util.List;
 
 public class Jogador {
+    private String nome;
     private List<Embarcacao> embarcacoes;
     private Tabuleiro tabuleiro;
     
-    public Jogador(List<Embarcacao> embarcacoes, Tabuleiro tabuleiro) {
+    public Jogador(String nome, List<Embarcacao> embarcacoes, Tabuleiro tabuleiro) {
+        this.nome = nome;
         this.embarcacoes = embarcacoes;
         this.tabuleiro = tabuleiro;
     }
@@ -27,5 +29,9 @@ public class Jogador {
     
     public Embarcacao[] obtemEmbarcacoes() {
         return embarcacoes.toArray(Embarcacao[]::new); // retorna um array para não adicionar embarcações à List<> original.
+    }
+    
+    public String obtemNome() {
+        return nome;
     }
 }

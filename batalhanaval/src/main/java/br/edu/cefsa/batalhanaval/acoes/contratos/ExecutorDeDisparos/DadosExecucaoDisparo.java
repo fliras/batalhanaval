@@ -6,16 +6,20 @@ import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
 import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
 
 public class DadosExecucaoDisparo {
-    private final Embarcacao embarcacao;
-    private final TiposDeTiro tipoTiro;
-    private final Coordenadas posicaoAlvo;
-    private final Tabuleiro tabuleiroAlvo;
+    private Embarcacao embarcacao;
+    private TiposDeTiro tipoTiro;
+    private Coordenadas posicaoAlvo;
+    private Tabuleiro tabuleiroAlvo;
     
     public DadosExecucaoDisparo(Embarcacao embarcacao, TiposDeTiro tipoTiro, Coordenadas posicaoAlvo, Tabuleiro tabuleiroAlvo) {
         this.embarcacao = embarcacao;
         this.tipoTiro = tipoTiro;
         this.posicaoAlvo = posicaoAlvo;
         this.tabuleiroAlvo = tabuleiroAlvo;
+    }
+    
+    public DadosExecucaoDisparo() {
+        
     }
     
     public Embarcacao obtemEmbarcacao() {
@@ -33,4 +37,21 @@ public class DadosExecucaoDisparo {
     public Tabuleiro obtemTabuleiroAlvo() {
         return tabuleiroAlvo;
     }
+    
+    public void atribuiEmbarcacao(Embarcacao embarcacao) {
+        this.embarcacao = embarcacao;
+    }
+
+    public void atribuiTipoTiro(TiposDeTiro tipoTiro) {
+        this.tipoTiro = tipoTiro;
+    }
+
+    public void atribuiPosicaoAlvo(Coordenadas posicaoAlvo) {
+        this.posicaoAlvo = posicaoAlvo;
+    }
+
+    public void atribuiTabuleiroAlvo(Tabuleiro tabuleiroAlvo) {
+        this.tabuleiroAlvo = tabuleiroAlvo;
+    }
+    
 }

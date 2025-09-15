@@ -9,14 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MontadorDeEmbarcacoesPadrao implements MontadorDeEmbarcacoes {
-    private final DificuldadeDeJogo dificuldadeJogo;
-    
-    public MontadorDeEmbarcacoesPadrao(DificuldadeDeJogo dificuldadeJogo) {
-        this.dificuldadeJogo = dificuldadeJogo;
-    }
     
     @Override
-    public List<Embarcacao> monta() {
+    public List<Embarcacao> monta(DificuldadeDeJogo dificuldadeJogo) {
         List<Embarcacao> embarcacoes = new ArrayList<>();
         for (int i = 0; i < dificuldadeJogo.obtemQtdePortaAvioes(); i++) {
             embarcacoes.add(HelpersEmbarcacao.criaEmbarcacao(TiposDeEmbarcacao.PORTA_AVIOES, dificuldadeJogo));

@@ -8,11 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.SwingConstants;
 import javax.swing.Box;
 
@@ -31,7 +29,6 @@ public class JanelaDoTabuleiro extends JFrame {
         this.deveEsconderEmbarcacoes = true;
 
         configurarJanela();
-        adicionarCabecalho();
         criarPainelNumerado();
     }
 
@@ -41,29 +38,6 @@ public class JanelaDoTabuleiro extends JFrame {
         setLayout(new BorderLayout());
         setSize(900, 700);
         setLocationRelativeTo(null);
-    }
-
-    private void adicionarCabecalho() {
-        JPanel cabecalho = new JPanel();
-        cabecalho.setLayout(new BoxLayout(cabecalho, BoxLayout.Y_AXIS));
-        cabecalho.setBackground(Color.LIGHT_GRAY);
-        cabecalho.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-        JLabel info1 = new JLabel("Usuário: João");
-        JLabel info2 = new JLabel("Data: 14/09/2025");
-        JLabel info3 = new JLabel("Status: Ativo");
-
-        info1.setAlignmentX(Component.LEFT_ALIGNMENT);
-        info2.setAlignmentX(Component.LEFT_ALIGNMENT);
-        info3.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-        cabecalho.add(info1);
-        cabecalho.add(Box.createVerticalStrut(5));
-        cabecalho.add(info2);
-        cabecalho.add(Box.createVerticalStrut(5));
-        cabecalho.add(info3);
-
-        //add(cabecalho, BorderLayout.NORTH);
     }
 
     private void criarPainelNumerado() {
@@ -109,12 +83,6 @@ public class JanelaDoTabuleiro extends JFrame {
 
         // Adiciona tudo na parte central da janela
         add(painelComNumeracao, BorderLayout.CENTER);
-    }
-
-    public void setCorCelula(int linha, int coluna, Color cor) {
-        if (linha >= 0 && linha < qtdeLinhas && coluna >= 0 && coluna < qtdeColunas) {
-            celulas[linha][coluna].setBackground(cor);
-        }
     }
     
     public void atualizaTela() {

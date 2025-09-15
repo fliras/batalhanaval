@@ -1,4 +1,4 @@
-package br.edu.cefsa.batalhanaval.main;
+package br.edu.cefsa.batalhanaval.jogo.contratos;
 
 import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
 import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
@@ -9,11 +9,11 @@ public class Jogador {
     private List<Embarcacao> embarcacoes;
     private Tabuleiro tabuleiro;
     
-    protected void atribuiTabuleiro(Tabuleiro tabuleiro) {
+    public void atribuiTabuleiro(Tabuleiro tabuleiro) {
         this.tabuleiro = tabuleiro;
     }
     
-    protected void atribuiEmbarcacoes(List<Embarcacao> embarcacoes) {
+    public void atribuiEmbarcacoes(List<Embarcacao> embarcacoes) {
         this.embarcacoes = embarcacoes;
     }
     

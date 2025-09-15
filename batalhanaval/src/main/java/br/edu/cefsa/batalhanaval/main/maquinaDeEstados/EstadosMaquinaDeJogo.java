@@ -1,4 +1,4 @@
-package br.edu.cefsa.batalhanaval.main;
+package br.edu.cefsa.batalhanaval.main.maquinaDeEstados;
 
 public enum EstadosMaquinaDeJogo {
     OBTENCAO_DO_NOME_DO_JOGADOR,

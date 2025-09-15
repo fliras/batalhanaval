@@ -11,7 +11,7 @@ import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionamentoEmb
 import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.AlgoritmoPosicionamentoEmbarcacao;
 import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionamentoEmbarcacaoVerticalParaCima;
 import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.PosicionamentosDeEmbarcacao;
-import br.edu.cefsa.batalhanaval.main.MaquinaDeJogo;
+import br.edu.cefsa.batalhanaval.main.maquinaDeEstados.MaquinaDeJogo;
 import java.util.HashMap;
 
 public class Main {

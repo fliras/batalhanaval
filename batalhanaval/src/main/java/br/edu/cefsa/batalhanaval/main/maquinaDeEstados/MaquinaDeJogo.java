@@ -1,5 +1,6 @@
-package br.edu.cefsa.batalhanaval.main;
+package br.edu.cefsa.batalhanaval.main.maquinaDeEstados;
 
+import br.edu.cefsa.batalhanaval.jogo.contratos.Jogador;
 import br.edu.cefsa.batalhanaval.acoes.contratos.ChecadorDeVencedor;
 import br.edu.cefsa.batalhanaval.acoes.contratos.GeradorDeJogadas;
 import br.edu.cefsa.batalhanaval.acoes.contratos.MontadorDeEmbarcacoes;
@@ -13,6 +14,7 @@ import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeMedia;
 import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
 import br.edu.cefsa.batalhanaval.embarcacoes.HelpersEmbarcacao;
 import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.main.JanelaDoTabuleiro;
 import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
 import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
 import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
@@ -93,6 +95,9 @@ public class MaquinaDeJogo {
         prompt += "Quadrados pretos são partes de embarcações intactas.\n";
         prompt += "Quadrados cinzas são tiros em água\n";
         prompt += "Quadrados vermelhos são tiros que atingiram uma embarcação.\n";
+        prompt += "A cada rodada, você verá todas as embarcações disponíveis e escolherá uma para realizar o disparo.\n";
+        prompt += "Em seguida, escolherá o tipo de tiro e a posição alvo.\n";
+        prompt += "Depois é a vez do BOT e assim segue o jogo até que alguém não tenha mais embarcações disponíveis.";
         Utils.exibeMensagem(prompt);
         estadoAtual = EstadosMaquinaDeJogo.ESCOLHA_DE_DIFICULDADE;
     }

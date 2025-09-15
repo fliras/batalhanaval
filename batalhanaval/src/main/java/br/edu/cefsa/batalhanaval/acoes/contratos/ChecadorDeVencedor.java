@@ -1,6 +1,6 @@
 package br.edu.cefsa.batalhanaval.acoes.contratos;
 
-import br.edu.cefsa.batalhanaval.main.Jogador;
+import br.edu.cefsa.batalhanaval.jogo.contratos.Jogador;
 
 public interface ChecadorDeVencedor {
     public Jogador checa(Jogador jogador1, Jogador jogador2);

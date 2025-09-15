@@ -1,23 +1,23 @@
 package br.edu.cefsa.batalhanaval.main.maquinaDeEstados;
 
-import br.edu.cefsa.batalhanaval.jogo.contratos.Jogador;
+import br.edu.cefsa.batalhanaval.core.jogo.contratos.Jogador;
 import br.edu.cefsa.batalhanaval.acoes.contratos.ChecadorDeVencedor;
 import br.edu.cefsa.batalhanaval.acoes.contratos.GeradorDeJogadas;
 import br.edu.cefsa.batalhanaval.acoes.contratos.MontadorDeEmbarcacoes;
 import br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos.DadosExecucaoDisparo;
 import br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos.ExecutorDeDisparos;
 import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.PosicionadorDeEmbarcacoes;
-import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
-import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeDificil;
-import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeFacil;
-import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.DificuldadeMedia;
-import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
-import br.edu.cefsa.batalhanaval.embarcacoes.HelpersEmbarcacao;
-import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.core.armas.contratos.TiposDeTiro;
+import br.edu.cefsa.batalhanaval.core.dificuldadesDeJogo.DificuldadeDificil;
+import br.edu.cefsa.batalhanaval.core.dificuldadesDeJogo.DificuldadeFacil;
+import br.edu.cefsa.batalhanaval.core.dificuldadesDeJogo.DificuldadeMedia;
+import br.edu.cefsa.batalhanaval.core.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
+import br.edu.cefsa.batalhanaval.core.embarcacoes.HelpersEmbarcacao;
+import br.edu.cefsa.batalhanaval.core.embarcacoes.contratos.Embarcacao;
 import br.edu.cefsa.batalhanaval.main.JanelaDoTabuleiro;
-import br.edu.cefsa.batalhanaval.tabuleiro.TabuleiroPadrao;
-import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
-import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.TabuleiroPadrao;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.contratos.Coordenadas;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.contratos.Tabuleiro;
 import br.edu.cefsa.batalhanaval.utils.Utils;
 import java.util.List;
 

@@ -1,9 +1,9 @@
 package br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos;
 
-import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
-import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
-import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
-import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
+import br.edu.cefsa.batalhanaval.core.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.core.armas.contratos.TiposDeTiro;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.contratos.Tabuleiro;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.contratos.Coordenadas;
 
 public class DadosExecucaoDisparo {
     private Embarcacao embarcacao;

@@ -1,0 +1,35 @@
+package br.edu.cefsa.batalhanaval.core.jogo.contratos;
+
+import br.edu.cefsa.batalhanaval.core.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.contratos.Tabuleiro;
+import java.util.List;
+
+public class Jogador {
+    private String nome;
+    private List<Embarcacao> embarcacoes;
+    private Tabuleiro tabuleiro;
+    
+    public void atribuiTabuleiro(Tabuleiro tabuleiro) {
+        this.tabuleiro = tabuleiro;
+    }
+    
+    public void atribuiEmbarcacoes(List<Embarcacao> embarcacoes) {
+        this.embarcacoes = embarcacoes;
+    }
+    
+    public Tabuleiro obtemTabuleiro() {
+        return tabuleiro;
+    }
+    
+    public Embarcacao[] obtemEmbarcacoes() {
+        return embarcacoes.toArray(Embarcacao[]::new); // retorna um array para não adicionar embarcações à List<> original.
+    }
+    
+    public void atribuiNome(String nome) {
+        this.nome = nome;
+    }
+    
+    public String obtemNome() {
+        return nome;
+    }
+}

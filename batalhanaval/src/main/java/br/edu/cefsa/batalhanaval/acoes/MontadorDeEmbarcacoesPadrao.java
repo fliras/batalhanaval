@@ -1,10 +1,10 @@
 package br.edu.cefsa.batalhanaval.acoes;
 
 import br.edu.cefsa.batalhanaval.acoes.contratos.MontadorDeEmbarcacoes;
-import br.edu.cefsa.batalhanaval.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
-import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
-import br.edu.cefsa.batalhanaval.embarcacoes.HelpersEmbarcacao;
-import br.edu.cefsa.batalhanaval.embarcacoes.contratos.TiposDeEmbarcacao;
+import br.edu.cefsa.batalhanaval.core.dificuldadesDeJogo.contratos.DificuldadeDeJogo;
+import br.edu.cefsa.batalhanaval.core.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.core.embarcacoes.HelpersEmbarcacao;
+import br.edu.cefsa.batalhanaval.core.embarcacoes.contratos.TiposDeEmbarcacao;
 import java.util.ArrayList;
 import java.util.List;
 

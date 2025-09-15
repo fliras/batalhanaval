@@ -2,11 +2,11 @@ package br.edu.cefsa.batalhanaval.acoes;
 
 import br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos.DadosExecucaoDisparo;
 import br.edu.cefsa.batalhanaval.acoes.contratos.executorDeDisparos.ExecutorDeDisparos;
-import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
-import br.edu.cefsa.batalhanaval.armas.HelpersTiros;
-import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
-import br.edu.cefsa.batalhanaval.armas.contratos.TiposDeTiro;
-import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.contratos.Coordenadas;
+import br.edu.cefsa.batalhanaval.core.armas.HelpersTiros;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.contratos.Tabuleiro;
+import br.edu.cefsa.batalhanaval.core.armas.contratos.TiposDeTiro;
+import br.edu.cefsa.batalhanaval.core.embarcacoes.contratos.Embarcacao;
 import java.util.List;
 
 public class ExecutorDeDisparosPadrao implements ExecutorDeDisparos {

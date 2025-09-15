@@ -1,8 +1,8 @@
 package br.edu.cefsa.batalhanaval.main;
 
-import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
-import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
-import br.edu.cefsa.batalhanaval.tabuleiro.PosicaoTabuleiroPadrao;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.contratos.Tabuleiro;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.contratos.Coordenadas;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.PosicaoTabuleiroPadrao;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

@@ -1,10 +1,10 @@
 package br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes;
 
 import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.AlgoritmoPosicionamentoEmbarcacao;
-import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Coordenadas;
-import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
-import br.edu.cefsa.batalhanaval.embarcacoes.contratos.ParteDeEmbarcacao;
-import br.edu.cefsa.batalhanaval.tabuleiro.contratos.Tabuleiro;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.contratos.Coordenadas;
+import br.edu.cefsa.batalhanaval.core.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.core.embarcacoes.contratos.ParteDeEmbarcacao;
+import br.edu.cefsa.batalhanaval.core.tabuleiro.contratos.Tabuleiro;
 
 public class PosicionamentoEmbarcacaoVerticalParaCima implements AlgoritmoPosicionamentoEmbarcacao {
     @Override

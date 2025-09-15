@@ -1,8 +1,8 @@
 package br.edu.cefsa.batalhanaval.acoes;
 
 import br.edu.cefsa.batalhanaval.acoes.contratos.ChecadorDeVencedor;
-import br.edu.cefsa.batalhanaval.embarcacoes.contratos.Embarcacao;
-import br.edu.cefsa.batalhanaval.jogo.contratos.Jogador;
+import br.edu.cefsa.batalhanaval.core.embarcacoes.contratos.Embarcacao;
+import br.edu.cefsa.batalhanaval.core.jogo.contratos.Jogador;
 
 public class ChecadorDeVencedorPadrao implements ChecadorDeVencedor {
     @Override

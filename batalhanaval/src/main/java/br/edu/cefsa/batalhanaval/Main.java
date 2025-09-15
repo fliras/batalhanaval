@@ -13,7 +13,6 @@ import br.edu.cefsa.batalhanaval.acoes.posicionadorEmbarcacoes.PosicionamentoEmb
 import br.edu.cefsa.batalhanaval.acoes.contratos.posicionadorDeEmbarcacoes.PosicionamentosDeEmbarcacao;
 import br.edu.cefsa.batalhanaval.main.MaquinaDeJogo;
 import java.util.HashMap;
-import javax.swing.JOptionPane;
 
 public class Main {
     public static void main(String[] args) {
@@ -37,9 +36,5 @@ public class Main {
             posicionadorEmbarcacoes
         );
         maquinaDeJogo.inicia();
-    }
-    
-    public static String montaJanelaDeInput(String titulo, String prompt) {
-        return JOptionPane.showInputDialog(null, prompt, titulo, JOptionPane.QUESTION_MESSAGE);
     }
 }

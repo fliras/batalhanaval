@@ -18,15 +18,17 @@ import javax.swing.Box;
 
 public class JanelaDoTabuleiro extends JFrame {
     private JPanel gridPanel;
-    private JPanel[][] celulas;
-    private Tabuleiro tabuleiro;
-    private int qtdeLinhas;
-    private int qtdeColunas;
+    private final JPanel[][] celulas;
+    private final Tabuleiro tabuleiro;
+    private final int qtdeLinhas;
+    private final int qtdeColunas;
+    private boolean deveEsconderEmbarcacoes;
 
     public JanelaDoTabuleiro(Tabuleiro tabuleiro) {
         this.tabuleiro = tabuleiro;
         qtdeLinhas = qtdeColunas = tabuleiro.obtemQuantidadeDeLinhasEColunas();
         this.celulas = new JPanel[qtdeLinhas][qtdeColunas];
+        this.deveEsconderEmbarcacoes = true;
 
         configurarJanela();
         adicionarCabecalho();
@@ -34,7 +36,7 @@ public class JanelaDoTabuleiro extends JFrame {
     }
 
     private void configurarJanela() {
-        setTitle("Tabuleiro de Ablublubléblé");
+        setTitle("Tabuleiro do Alvo atual");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setSize(900, 700);
@@ -123,7 +125,7 @@ public class JanelaDoTabuleiro extends JFrame {
             Color cor = Color.CYAN;
             if (!posicao.verificaSeEstaVazia() && posicao.verificaSeFoiAtingida())
                 cor = Color.RED;
-            else if (!posicao.verificaSeEstaVazia())
+            else if (!deveEsconderEmbarcacoes && !posicao.verificaSeEstaVazia())
                 cor = Color.BLACK;
             else if (posicao.verificaSeFoiAtingida())
                 cor = Color.LIGHT_GRAY;
@@ -137,5 +139,9 @@ public class JanelaDoTabuleiro extends JFrame {
                 celulas[linha][coluna].setBackground(Color.CYAN);
             }
         }
+    }
+    
+    public void defineSeDeveEsconderEmbarcacoes(boolean deveEsconder) {
+        deveEsconderEmbarcacoes = deveEsconder;
     }
 }

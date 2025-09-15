@@ -63,6 +63,7 @@ public class MaquinaDeJogo {
         while (true) {
             switch(estadoAtual) {
                 case OBTENCAO_DO_NOME_DO_JOGADOR -> obtemNomeDoJogador();
+                case EXIBICAO_DE_AJUDA -> exibeAjuda();
                 case ESCOLHA_DE_DIFICULDADE -> solicitaDificuldade();
                 case INICIALIZACAO_DE_COMPONENTES -> inicializaComponentes();
                 case ESCOLHA_DE_EMBARCACAO -> solicitaEmbarcacao();
@@ -80,10 +81,20 @@ public class MaquinaDeJogo {
         if (!nomeJogador.equals("")) {
             jogadorAtacante = new Jogador();
             jogadorAtacante.atribuiNome(nomeJogador);
-            estadoAtual = EstadosMaquinaDeJogo.ESCOLHA_DE_DIFICULDADE;
+            estadoAtual = EstadosMaquinaDeJogo.EXIBICAO_DE_AJUDA;
         } else {
             Utils.exibeMensagem("Informe o seu nome!");
         }
+    }
+    
+    private void exibeAjuda() {
+        String prompt = String.format("Olá!, %s! Bem-vind(a)o à batalha naval.\n", jogadorAtacante.obtemNome());
+        prompt += "Antes de jogar, saiba do seguinte:\n";
+        prompt += "Quadrados pretos são partes de embarcações intactas.\n";
+        prompt += "Quadrados cinzas são tiros em água\n";
+        prompt += "Quadrados vermelhos são tiros que atingiram uma embarcação.\n";
+        Utils.exibeMensagem(prompt);
+        estadoAtual = EstadosMaquinaDeJogo.ESCOLHA_DE_DIFICULDADE;
     }
     
     private void solicitaDificuldade() {
@@ -161,9 +172,13 @@ public class MaquinaDeJogo {
     
     private void solicitaCoordenadasDoAlvo() {
         String coordenadas = Utils.obtemInput("Informe a posição alvo.\nEx: para atingir a 4º coluna da 3º linha, informe 3:4");
-        Coordenadas posicaoAlvo = new Coordenadas(coordenadas);
-        dadosProximaJogada.atribuiPosicaoAlvo(posicaoAlvo);
-        estadoAtual = EstadosMaquinaDeJogo.REALIZACAO_DE_DISPARO;
+        if (coordenadas.equals("")) {
+            Utils.exibeMensagem("Informe as coordenadas do alvo!");
+        } else {
+            Coordenadas posicaoAlvo = new Coordenadas(coordenadas);
+            dadosProximaJogada.atribuiPosicaoAlvo(posicaoAlvo);
+            estadoAtual = EstadosMaquinaDeJogo.REALIZACAO_DE_DISPARO;
+        }
     }
     
     private void realizaDisparo() {
@@ -189,6 +204,7 @@ public class MaquinaDeJogo {
         DadosExecucaoDisparo disparoAleatorio = geradorJogadas.gera(jogadorAtacante.obtemEmbarcacoes(), jogadorAlvo.obtemTabuleiro());
         boolean disparoExecutado = executorDisparos.executa(disparoAleatorio);
         if (disparoExecutado) {
+            janelaTabuleiroAlvo.defineSeDeveEsconderEmbarcacoes(false);
             janelaTabuleiroAlvo.atualizaTela();
             Jogador vencedor = checadorVencedor.checa(jogadorAlvo, jogadorAtacante);
             if (vencedor != null) {
@@ -203,6 +219,7 @@ public class MaquinaDeJogo {
     }
         
     private void alternaTurno() {
+        janelaTabuleiroAlvo.defineSeDeveEsconderEmbarcacoes(true);
         JanelaDoTabuleiro janelaAux = janelaTabuleiroAlvo;
         janelaTabuleiroAlvo = janelaTabuleiroAtacante;
         janelaTabuleiroAtacante = janelaAux;

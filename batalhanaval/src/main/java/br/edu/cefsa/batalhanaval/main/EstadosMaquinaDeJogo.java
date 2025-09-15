@@ -2,6 +2,7 @@ package br.edu.cefsa.batalhanaval.main;
 
 public enum EstadosMaquinaDeJogo {
     OBTENCAO_DO_NOME_DO_JOGADOR,
+    EXIBICAO_DE_AJUDA,
     ESCOLHA_DE_DIFICULDADE,
     INICIALIZACAO_DE_COMPONENTES,
     ESCOLHA_DE_EMBARCACAO,
